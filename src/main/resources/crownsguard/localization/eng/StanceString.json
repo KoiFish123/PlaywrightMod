@@ -1,0 +1,21 @@
+{
+  "Neutral": {
+    "NAME": "",
+    "DESCRIPTION": [
+      ""
+    ]
+  },
+  "Tank": {
+    "NAME": "Tank",
+    "DESCRIPTION": [
+      "While in this stance, gain 1 #yDexterity, plus an additional 1 #yDexterity for every 5 #yheat you have."
+    ]
+  },
+
+  "Bruiser": {
+    "NAME": "Bruiser",
+    "DESCRIPTION": [
+      "While in this stance, gain 1 #yStrength, plus an additional 1 #yStrength for every 5 #yheat you have."
+    ]
+  }
+}

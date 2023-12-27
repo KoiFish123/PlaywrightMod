@@ -1,0 +1,84 @@
+{
+  "${modID}:RelicID": {
+    "NAME": "Good Relic",
+    "FLAVOR": "Flavor text displayed in detailed relic view.",
+    "DESCRIPTIONS": [
+      "Gain [E] at the start of your turn. [E] is an energy icon."
+    ]
+  },
+
+  "${modID}:CrownsguardBadge": {
+    "NAME": "Crownsguard Badge",
+    "FLAVOR": "The Crownsguard is the primary law enforcement arm of the Dwendalian Empire.",
+    "DESCRIPTIONS": [
+      "At the start of combat, enter #y${modID}:Tank or #y${modID}:Bruiser randomly"
+    ]
+  },
+
+  "${modID}:BlackTortoiseSpirit": {
+    "NAME": "Black Tortoise Spirit",
+    "FLAVOR": "A solid defense will bring your strength",
+    "DESCRIPTIONS": [
+      "While you have less than half your #yHeat, blocking attack raises your #yHeat by 1 if your block is not broken."
+    ]
+  },
+
+  "${modID}:WhiteTigerSpirit": {
+    "NAME": "White Tiger Spirit",
+    "FLAVOR": "Feral and full of fervor",
+    "DESCRIPTIONS": [
+      "#yHeat gain from sources other than attacking increase by 1."
+    ]
+  },
+
+  "${modID}:AzureDragonSpirit": {
+    "NAME": "Azure Dragon Spirit",
+    "FLAVOR": "Go beyond your limit",
+    "DESCRIPTIONS": [
+      "Increase #yMax #yHeat by 5"
+    ]
+  },
+
+  "${modID}:VermillionBirdSpirit": {
+    "NAME": "Vermillion Bird Spirit",
+    "FLAVOR": "Rise like a phoenix",
+    "DESCRIPTIONS": [
+      "While you have less than half your #yHeat and HP, your #yHeat increases by 1 at the start of your turn."
+    ]
+  },
+
+  "${modID}:BodhisattvaSpirit": {
+    "NAME": "Bodhisattva Spirit",
+    "FLAVOR": "Put off entering paradise in order to help others attain enlightenment",
+    "DESCRIPTIONS": [
+      "At the start of your turn, lose all Heat, and gain 2 blocks and heal 1 HP for each heat lost this way."
+    ]
+  },
+
+  "${modID}:YellowDragonSpirit": {
+    "NAME": "Azure Dragon Spirit",
+    "FLAVOR": "Go beyond your limit",
+    "DESCRIPTIONS": [
+      "Spending Heat will heal you 1 HP."
+    ]
+  },
+
+  "${modID}:Kiwami": {
+    "NAME": "Kiwami",
+    "FLAVOR": "Extreme Heat go brrr",
+    "DESCRIPTIONS": [
+      "Right Click to enter Extreme Heat Mode.",
+      "Right Click to exit Extreme Heat Mode.",
+      " NL You have activated this relic, and can't do so again this turn.",
+      " NL You have not activate this relic this turn."
+    ]
+  },
+
+  "${modID}:EnmaSpirit": {
+    "NAME": "Enma Spirit",
+    "FLAVOR": "Judge of Hell",
+    "DESCRIPTIONS": [
+      "Your Heat is no longer reduce to 0 at the end of combat."
+    ]
+  }
+}

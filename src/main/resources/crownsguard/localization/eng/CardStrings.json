@@ -1,0 +1,168 @@
+{
+  "${modID}:ExampleCard": {
+    "NAME": "Name",
+    "DESCRIPTION": "Description.",
+    "UPGRADE_DESCRIPTION": "This will automatically be used if the card is upgraded. Remove it if unneeded.",
+    "EXTENDED_DESCRIPTION": [
+      "You can put more text in here.",
+      "If you need to use it for stuff.",
+      "Blizzard is a good example for this."
+    ]
+  },
+  "${modID}:LightAttack": {
+    "NAME": "Light Attack",
+    "DESCRIPTION": "Deal !D! damage.",
+    "UPGRADE_DESCRIPTION": "Deal !D! ${modID}:light damage."
+  },
+
+  "${modID}:HeavyAttack": {
+    "NAME": "Heavy Attack",
+    "DESCRIPTION": "Deal !D! damage. Gain 2 ${modID}:heat.",
+    "UPGRADE_DESCRIPTION": "Deal !D! ${modID}:heavy damage. NL Gain 2 ${modID}:heat."
+  },
+
+  "${modID}:Charge": {
+    "NAME": "Charge",
+    "DESCRIPTION": "Apply ${modID}:Charged on yourself. NL Ethereal",
+    "UPGRADE_DESCRIPTION": "Apply ${modID}:Charged on yourself."
+  },
+
+  "${modID}:Guard": {
+    "NAME": "Guard",
+    "DESCRIPTION": "Gain !B! block."
+  },
+
+  "${modID}:ResistGuard": {
+    "NAME": "Resist Guard",
+    "DESCRIPTION": "Remove all your block. NL You gain ${modID}:Damage_Resistance for 1 turn and can not gain block until the start of your next turn.",
+    "UPGRADE_DESCRIPTION": "Remove all your block. NL You gain ${modID}:Damage_Resistance for 1 turn and can not gain block until the start of your next turn. NL Retain"
+  },
+
+  "${modID}:PerfectGuard": {
+    "NAME": "Perfect Guard",
+    "DESCRIPTION": "${modID}:Reaction NL ${modID}:Resist the next attack by !B!. NL While in ${modID}:Tank, apply 2 Weak if you reduce damage to 0"
+  },
+
+  "${modID}:StanceSwitchingTank": {
+    "NAME": "Stance Switching: Tank",
+    "DESCRIPTION": "Retain. NL Enter ${modID}:Tank. NL Exhaust"
+  },
+
+  "${modID}:StanceSwitchingBruiser": {
+    "NAME": "Stance Switching: Bruiser",
+    "DESCRIPTION": "Retain. NL Enter ${modID}:Bruiser. NL Exhaust"
+  },
+
+  "${modID}:ALittleCollateralDamage": {
+    "NAME": "A Little Collateral Damage",
+    "DESCRIPTION": "While in ${modID}:Tank, deal !M! damage to ALL enemies whenever you deal damage."
+  },
+
+  "${modID}:ResoluteCounter": {
+    "NAME": "Resolute Counter",
+    "DESCRIPTION": "${modID}:Reaction NL The next time you receive damage, deal !D! damage back to the attacker."
+  },
+
+  "${modID}:TigerStoppingFist": {
+    "NAME": "Tiger Stopping Fist",
+    "DESCRIPTION": "${modID}:Reaction NL Negate the next attack damage you receive and deal !D! ${modID}:heavy damage back to the attacker. NL Does more damage NL with less ${modID}:Heat."
+  },
+
+  "${modID}:Finisher": {
+    "NAME": "Finisher",
+    "DESCRIPTION": "Deal !D! ${modID}:heavy damage. NL Gain [E] for each ${modID}:Rush_Combo you have. NL Put a *Double *Finisher in your hand.",
+    "UPGRADE_DESCRIPTION": "Deal !D! ${modID}:heavy damage. NL Gain [E] for each ${modID}:Rush_Combo you have. NL Put a *Double *Finisher+ in your hand."
+  },
+
+  "${modID}:DoubleFinisher": {
+    "NAME": "Double Finisher",
+    "DESCRIPTION": "Deal !D! ${modID}:heavy damage.",
+    "UPGRADE_DESCRIPTION": "Deal !D! ${modID}:heavy damage. NL Put a *Triple *Finisher in your hand. NL Exhaust"
+  },
+
+  "${modID}:TripleFinisher": {
+    "NAME": "Triple Finisher",
+    "DESCRIPTION": "Deal !D! ${modID}:heavy damage. NL Gain !M! Heat. NL Exhaust"
+  },
+
+  "${modID}:EXRoadsideBrutality": {
+    "NAME": "EX Roadside Brutality",
+    "DESCRIPTION": "Retain Exhaust NL Spend !M! heat to deal !D! ${modID}:heavy damage. NL Put a copy of this card in your hand. NL ${modID}:Heat_Action",
+    "EXTENDED_DESCRIPTION": [
+      "I can't do that! I don't have it in me!",
+      "I don't have enough heat"
+    ]
+  },
+
+  "${modID}:Taunt": {
+    "NAME": "Taunt",
+    "DESCRIPTION": "Gain !M! ${modID}:Heat. Apply 1 Strength and 1 Vulnerable to an enemy"
+  },
+
+  "${modID}:Repel": {
+    "NAME": "Repel",
+    "DESCRIPTION": "${modID}:Reaction NL ${modID}:Parry damage that is !D! or lower. NL While in ${modID}:Bruiser, gain [E] next turn."
+  },
+
+  "${modID}:EXUnyieldingCounter": {
+    "NAME": "EX Unyielding Counter",
+    "DESCRIPTION": "${modID}:Reaction NL The next time you receive damage, spend 5 ${modID}:Heat to apply !M! Weak and deal !D! ${modID}:heavy damage back to the attacker."
+  },
+
+  "${modID}:Reguard": {
+    "NAME": "Reguard",
+    "DESCRIPTION": "${modID}:Reaction NL The next time your block would be broken, gain !B! block."
+  },
+
+  "${modID}:Smashed": {
+    "NAME": "Sh!tfaced",
+    "DESCRIPTION": "Blerghhhhh"
+  },
+
+  "${modID}:BoostAttack": {
+    "NAME": "Boost Attack",
+    "DESCRIPTION": "Gain !M! Strength.",
+    "EXTENDED_DESCRIPTION": [
+      " NL You can upgrade this card 3 more times.",
+      " NL You can upgrade this card 2 more times.",
+      " NL You can upgrade this card 1 more time."
+    ]
+  },
+
+  "${modID}:BoostDefense": {
+    "NAME": "Boost Defense",
+    "DESCRIPTION": "Gain !M! Dexterity.",
+    "EXTENDED_DESCRIPTION": [
+      " NL You can upgrade this card 3 more times.",
+      " NL You can upgrade this card 2 more times.",
+      " NL You can upgrade this card 1 more time."
+    ]
+  },
+
+  "${modID}:BreakfallAdept": {
+    "NAME": "Breakfall Adept",
+    "DESCRIPTION": "Reaction NL When you receive Vulnerable, reduce it by half instead.",
+    "UPGRADE_DESCRIPTION": "Reaction NL When you receive Vulnerable, reduce it to none instead."
+  },
+
+  "${modID}:WineAndDine": {
+    "NAME": "Wine And Dine",
+    "DESCRIPTION": "Gaining Drunk will heal 1 HP."
+  },
+
+  "${modID}:DrunkenMomentum": {
+    "NAME": "Drunken Momentum",
+    "DESCRIPTION": "At the start of your turn, gain 1 Energy for every 3 level of ${modID}:Drunk on you.",
+    "UPGRADE_DESCRIPTION": "Innate NL At the start of your turn, gain 1 Energy for every 3 level of ${modID}:Drunk on you."
+  },
+
+  "${modID}:EXDrunkenThrust": {
+    "NAME": "EX Drunken Thrust",
+    "DESCRIPTION": "Spend !M! heat to deal !D! ${modID}:heavy damage. NL Deal more damage equal to double your drunk level. Attack always hit. Lose all Drunk NL ${modID}:Heat_Action",
+    "UPGRADE_DESCRIPTION": "Spend !M! heat to deal !D! ${modID}:heavy damage. NL Deal more damage equal to triple your drunk level. Attack always hit. Lose all Drunk NL ${modID}:Heat_Action",
+    "EXTENDED_DESCRIPTION": [
+      "I can't do that! I don't have it in me!",
+      "I don't have enough heat"
+    ]
+  }
+}

@@ -1,0 +1,180 @@
+[
+  {
+    "PROPER_NAME": "This is displayed in the tooltip.",
+    "NAMES": [
+      "these",
+      "are",
+      "detected",
+      "in",
+      "the",
+      "text"
+    ],
+    "DESCRIPTION": "This is displayed in the tooltip. Spaces should not be used be avoided in NAMES, with the exception of multi-word keywords (see next entry)."
+  },
+  {
+    "PROPER_NAME": "Multiword Keyword",
+    "NAMES": [
+      "multiword keyword",
+      "multiword_keyword",
+      "multiword_keywords"
+    ],
+    "DESCRIPTION": "Make sure the first element in NAMES has no underscores. The rest should use _ in the place of spaces. In card text, you'll use the underscore versions."
+  },
+  {
+    "PROPER_NAME": "Bludgeoning",
+    "NAMES": [
+      "Bludgeoning",
+      "bludgeoning",
+      "Blunt",
+      "blunt"
+    ],
+    "DESCRIPTION": "This attack deals bludgeoning damage"
+  },
+  {
+    "PROPER_NAME": "Charged",
+    "NAMES": [
+      "Charged",
+      "charged"
+    ],
+    "DESCRIPTION": "Your next attack deal 50% additional damage and deal #Heavy damage. NL Playing any other card will remove this. NL Does not stack"
+  },
+  {
+    "PROPER_NAME": "Heavy",
+    "NAMES": [
+      "Heavy",
+      "heavy"
+    ],
+    "DESCRIPTION": "If a heavy attack reduces the target block to 0, apply 1 Vulnerable and 1 Weak"
+  },
+  {
+    "PROPER_NAME": "Light",
+    "NAMES": [
+      "Light",
+      "light"
+    ],
+    "DESCRIPTION": "When you make one light attack, gain one stack of #yRush #yCombo. NL When you have 3 stacks of #yRush #yCombo, gain one [E] and lose all #yRush #yCombo"
+  },
+  {
+    "PROPER_NAME": "Rush Combo",
+    "NAMES": [
+      "Rush Combo",
+      "rush combo",
+      "Rush_Combo",
+      "rush_combo"
+    ],
+    "DESCRIPTION": "When you have 3 stacks of #yRush #yCombo, gain one [E] and lose all #yRush #yCombo . NL At the end of your turn, lose 1 stack."
+  },
+  {
+    "PROPER_NAME": "Damage Resistance",
+    "NAMES": [
+      "Damage Resistance",
+      "Damage_Resistance",
+      "damage_resistance",
+      "damage resistance"
+    ],
+    "DESCRIPTION": "You take half as much damage"
+  },
+  {
+    "PROPER_NAME": "Reaction",
+    "NAMES": [
+      "Reaction",
+      "reaction"
+    ],
+    "DESCRIPTION": "Gain Retain for this turn when this card is drawn. NL This card will be automatically activated when the condition are met and discard itself. NL Playing a reaction card will let you draw another card."
+  },
+  {
+    "PROPER_NAME": "Reaction-Exhaust",
+    "NAMES": [
+      "Reaction_Exhaust",
+      "reaction-exhaust"
+    ],
+    "DESCRIPTION": "Gain Retain for this turn when this card is drawn. NL This card will be automatically activated when the condition are met and exhaust itself. NL Playing a reaction card will let you draw another card."
+  },
+
+  {
+    "PROPER_NAME": "Tank",
+    "NAMES": [
+      "Tank",
+      "tank"
+    ],
+    "DESCRIPTION": "While in this stance, gain 1 Dexterity + 1 for every 5 Heat you have."
+  },
+  {
+    "PROPER_NAME": "Bruiser",
+    "NAMES": [
+      "Bruiser",
+      "bruiser"
+    ],
+    "DESCRIPTION": "While in this stance, gain 1 Strength + 1 for every 5 Heat you have."
+  },
+  {
+    "PROPER_NAME": "Heat",
+    "NAMES": [
+      "Heat",
+      "heat"
+    ],
+    "DESCRIPTION": "You gain heat for each attack card you play, and lose heat for each unblocked damage you receive. NL Some cards required heat to play."
+  },
+  {
+    "PROPER_NAME": "Max Heat",
+    "NAMES": [
+      "max heat",
+      "Max Heat",
+      "max_heat",
+      "Max_Heat"
+    ],
+    "DESCRIPTION": "The maximum amount of heat you can have"
+  },
+  {
+    "PROPER_NAME": "Heat Action",
+    "NAMES": [
+      "heat action",
+      "Heat Action",
+      "heat_action",
+      "Heat_Action"
+    ],
+    "DESCRIPTION": "These are cards that will cost heat to play but will not give you heat."
+  },
+  {
+    "PROPER_NAME": "Extreme Heat Mode",
+    "NAMES": [
+      "Extreme Heat Mode",
+      "Extreme_Heat_Mode"
+    ],
+    "DESCRIPTION": "Deal more damage, gain more block, draw more card and gain extra [E] per turn! Lose heat over turn."
+  },
+  {
+    "PROPER_NAME": "Drunk",
+    "NAMES": [
+      "Drunk",
+      "drunk"
+    ],
+    "DESCRIPTION": "For each stack, attacks give one more heat but has 10% chance of dealing 0 damage. NL At max drunk, gained on Sh!tfaced"
+  },
+  {
+    "PROPER_NAME": "Parry",
+    "NAMES": [
+      "Parry",
+      "parry"
+    ],
+    "DESCRIPTION": "Damage negation that scales with Strength."
+  },
+
+  {
+    "PROPER_NAME": "Evade",
+    "NAMES": [
+      "Evade",
+      "evade"
+    ],
+    "DESCRIPTION": "Damage negation that scales with Dexterity."
+  },
+
+  {
+    "PROPER_NAME": "Resist",
+    "NAMES": [
+      "Resist",
+      "resist"
+    ],
+    "DESCRIPTION": "Damage reduction that scales with Strength AND Dexterity."
+  }
+]

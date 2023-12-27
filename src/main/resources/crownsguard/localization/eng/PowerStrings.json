@@ -1,0 +1,94 @@
+{
+  "${modID}:PowerID": {
+    "NAME": "Ultimate Power",
+    "DESCRIPTIONS": [
+      "You are Very Cool and Strong."
+    ]
+  },
+
+  "${modID}:ChargedPower": {
+    "NAME": "Charged",
+    "DESCRIPTIONS": [
+      "Your next attack deals 25% more damage and becomes Heavy. NL Playing any other card will remove this. NL Does not stack"
+    ]
+  },
+
+  "${modID}:RushCombo": {
+    "NAME": "Rush Combo",
+    "DESCRIPTIONS": [
+      "Dealing light damage increase the stack by 1. NL At 3 stacks, gain [E] and lose all stacks. NL At the start of your turn, lose 1 stack."
+    ]
+  },
+
+  "${modID}:DamageResistance": {
+    "NAME": "Damage Resistance",
+    "DESCRIPTIONS": [
+      "You take half as much damage"
+    ]
+  },
+
+  "${modID}:TempDamageResistance": {
+    "NAME": "Temporary Damage Resistance",
+    "DESCRIPTIONS": [
+      "You take half as much damage for ",
+      " turns"
+    ]
+  },
+
+  "${modID}:BludgeoningResistance": {
+    "NAME": "Bludgeoning Resistance",
+    "DESCRIPTIONS": [
+      "Bludgeoning damage against this creature."
+    ]
+  },
+
+  "${modID}:CollateralDamagePower": {
+    "NAME": "Collateral Damage",
+    "DESCRIPTIONS":[
+      "While in #yTank stance, deal #b",
+      " damage to ALL enemies when you attack"]
+  },
+
+  "${modID}:ExtremeHeatMode": {
+    "NAME": "Extreme Heat Mode",
+    "DESCRIPTIONS":[
+      "Deal #g",
+      " extra damage. Gain #g",
+      " extra block. Draw an extra card and gain [E] per turn. NL Lose #r",
+      " #yHeat per turn."
+    ]
+  },
+
+  "${modID}:DrunkPower": {
+    "NAME": "Drunk",
+    "DESCRIPTIONS":[
+      "Attacks give #g",
+      " more #yheat, but has a #r",
+      "% chance of dealing 0 damage. Lose 1 #yDrunk at the start of your turn.",
+      "Missed"
+    ]
+  },
+
+  "${modID}:PlaywrightFlightPower": {
+    "NAME": "Flight",
+    "DESCRIPTIONS": [
+      "Take 50% reduced damage. If you take attack damage, lose 1 Flight. At the end of your turn, lose 1 Flight."
+    ]
+  },
+
+  "${modID}:WineAndDinePower": {
+    "NAME": "Wine And Dine",
+    "DESCRIPTIONS": [
+      "Gaining Drunk will heal #g",
+      " HP."
+    ]
+  },
+
+  "${modID}:DrunkenMomentum": {
+    "NAME": "Drunken Momentum",
+    "DESCRIPTIONS": [
+      "At the start of your turn, gain ",
+      " [E] for every 3 level of #yDrunk on you."
+    ]
+  }
+}

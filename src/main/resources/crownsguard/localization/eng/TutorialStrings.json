@@ -1,0 +1,55 @@
+{
+  "HeatTutorial": {
+    "TEXT": [
+      "The gauge fills as the player lands attacks and grabs.",
+
+      "Taking damage reduce your heat gauge. If you end your turn without dealing damage, the heat gauge reduces.",
+
+      "You can spend Heat to play cards that need it. Some of them are called Heat Actions, which deals great damage and ignore Thorns. However, dealing damage this way will not fill the gauge",
+
+      "Some stances give you more power depends on your heat. For example, The Crownsguard's Bruiser stance gives you 1 Strength for every 5 heat you have.",
+
+      "You loss all Heat after combat."
+    ],
+    "LABEL": [
+      "Heat Mechanic",
+      "Heat Gain",
+      "Heat Loss",
+      "More Power",
+      "Heat Retention",
+      "(Page: ",
+      ")"
+    ]
+  },
+
+  "ExtremeHeatTutorial": {
+    "TEXT": [
+      "Enter a special mode called Extreme Heat Mode. NL NL",
+      "Your Heat Gauge will drain constantly while in this mode, NL ",
+      "and you cannot gain heat by any means. However, you will NL ",
+      "gain access to some powers and special attacks NL",
+      "not available in your regular style.",
+
+      "You can no longer gain Heat by any mean NL NL",
+      "Normally, you lose 3 Heat when you end your turn NL ",
+      "while you are in this mode. However, you no longer NL ",
+      "lose Heat when you are attacked.",
+
+      "If you are in a stance, the increases gained from having heat remains while you are in Extreme Heat Mode, even if the gauge decrease. NL",
+      "Depends on your heat when you activated Extreme Heat Mode, NL ",
+      "you gain +1 to damage dealt and block gain until you are no NL ",
+      "longer in Extreme Heat Mode. NL Other benefits include: NL - Draw 1 more card at start of turn NL - Gain 1 energy at start of turn NL",
+      "You can have gain more benefit through Power Cards or Relics.",
+
+      "When your has no Heat left while in this mode, you will exit this mode NL at the start of your next turn (before draw) or after you play your next card."
+    ],
+    "LABEL": [
+      "Extreme Heat Tutorial",
+      "Heat Gain/Loss",
+      "More Power",
+      "No Heat",
+      "(Page: ",
+      ")"
+    ]
+  }
+}
