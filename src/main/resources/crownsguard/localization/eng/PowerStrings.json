@@ -9,7 +9,7 @@
   "${modID}:ChargedPower": {
     "NAME": "Charged",
     "DESCRIPTIONS": [
-      "Your next attack deals 25% more damage and becomes Heavy. NL Playing any other card will remove this. NL Does not stack"
+      "Your next attack deals 50% more damage and becomes Heavy. NL Playing any other card will remove this. NL Does not stack"
     ]
   },
 

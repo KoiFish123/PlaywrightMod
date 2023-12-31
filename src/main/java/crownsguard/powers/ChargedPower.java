@@ -37,7 +37,7 @@ public class ChargedPower extends BasePower implements DamageModApplyingPower {
 
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
         if (type == DamageInfo.DamageType.NORMAL){
-            return damage * 1.25F;
+            return damage * 1.5F;
         }
         return damage;
     }

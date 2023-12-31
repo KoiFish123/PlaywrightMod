@@ -2,6 +2,9 @@ package crownsguard.powers;
 
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
+import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.MakeTempCardInDiscardAction;
 import com.megacrit.cardcrawl.core.Settings;
 import com.megacrit.cardcrawl.actions.common.ReducePowerAction;
@@ -12,10 +15,14 @@ import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.helpers.FontHelper;
 
+import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
+import com.megacrit.cardcrawl.powers.GainStrengthPower;
+import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.vfx.combat.BlockedWordEffect;
 import crownsguard.cards.status.Smashed;
 import crownsguard.character.PlaywrightCharacter;
+import crownsguard.damage.DrunkenAccurateDamage;
 
 import java.util.Random;
 
@@ -35,6 +42,8 @@ public class DrunkPower extends BasePower {
     protected Color greenColor2 = Color.GREEN.cpy();
 
     AbstractCard smashedCard = new Smashed();
+
+    protected int tempMaxDrunk = 5;
 
     public DrunkPower(AbstractCreature owner, int amount) {
         super(POWER_ID, TYPE, TURN_BASED, owner, amount);
@@ -72,12 +81,35 @@ public class DrunkPower extends BasePower {
 
     @Override
     public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
-        if (info.type == DamageInfo.DamageType.NORMAL)
-            if (!doesAttackHit()){
-                AbstractDungeon.effectList.add(new BlockedWordEffect(info.owner, info.owner.hb.cX, info.owner.hb.cY, DESCRIPTIONS[3]));
 
-                damageAmount = 0;
+        // // For Playwright creature (with Heat mechanic)
+        if (info.owner instanceof PlaywrightCharacter) {
+            if (info.type == DamageInfo.DamageType.NORMAL) {
+                for (AbstractDamageModifier mod : DamageModifierManager.getDamageMods(info)) {
+                    if (mod instanceof DrunkenAccurateDamage) {
+                        return super.onAttackToChangeDamage(info, damageAmount);
+                    }
+                }
+                if (!doesAttackHit()) {
+                    damageAmount = 0;
+                }
             }
+        }
+
+        // For non-Playwright creature (no Heat mechanic)
+        else {
+            if (info.type == DamageInfo.DamageType.NORMAL) {
+
+                for (AbstractDamageModifier mod : DamageModifierManager.getDamageMods(info)) {
+                    if (mod instanceof DrunkenAccurateDamage) {
+                        return super.onAttackToChangeDamage(info, damageAmount);
+                    }
+                }
+
+                damageAmount = doesAttackHit() ? 0 : amount * 2;
+            }
+        }
+
         return super.onAttackToChangeDamage(info, damageAmount);
     }
 
@@ -89,27 +121,54 @@ public class DrunkPower extends BasePower {
 
     @Override
     public void onInitialApplication() {
-        if (this.amount > ((PlaywrightCharacter) player).maxDrunk) {
-            int smashedAmount = amount-((PlaywrightCharacter) player).maxDrunk;
-            createSmashed(smashedAmount);
-            amount = ((PlaywrightCharacter) player).maxDrunk;
-        }
+        smashedBehavior();
     }
 
     @Override
     public void stackPower(int stackAmount) {
         this.fontScale = 8.0F;
         this.amount += stackAmount;
-        if (this.amount > ((PlaywrightCharacter) player).maxDrunk) {
-            createSmashed(amount - ((PlaywrightCharacter) player).maxDrunk);
-            amount = ((PlaywrightCharacter) player).maxDrunk;
-        }
+
+        smashedBehavior();
         if (this.amount == 0)
             addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, DrunkPower.POWER_ID));
     }
 
+    private void smashedBehavior() {
+
+        // For player
+        if (owner.equals(player)) {
+
+            // For Playwright character
+            if (this.amount > ((PlaywrightCharacter) player).maxDrunk) {
+                int smashedAmount = amount - ((PlaywrightCharacter) player).maxDrunk;
+                createSmashed(smashedAmount);
+                amount = ((PlaywrightCharacter) player).maxDrunk;
+            }
+
+            // For non-Playwright character
+            else if (!(owner instanceof PlaywrightCharacter)) {
+                if (this.amount > tempMaxDrunk) {
+                    int smashedAmount = amount - (tempMaxDrunk);
+                    createSmashed(smashedAmount);
+                    amount = tempMaxDrunk;
+                }
+            }
+        }
+
+        // For monster: Lose X strength for 1 turn
+        else if (owner instanceof AbstractMonster) {
+            if (this.amount > tempMaxDrunk) {
+                int smashedAmount = amount - (tempMaxDrunk);
+                addToBot(new ApplyPowerAction(owner, owner, new GainStrengthPower(this.owner, smashedAmount), smashedAmount));
+                addToBot(new ApplyPowerAction(owner, owner, new StrengthPower(this.owner, -smashedAmount), -smashedAmount));
+                amount = tempMaxDrunk;
+            }
+        }
+    }
+
     public void createSmashed(int amount) {
-            addToTop(new MakeTempCardInDiscardAction(smashedCard, amount));
+        addToTop(new MakeTempCardInDiscardAction(smashedCard, amount));
     }
 
     @Override

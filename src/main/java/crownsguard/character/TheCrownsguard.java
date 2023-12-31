@@ -250,7 +250,7 @@ public class TheCrownsguard extends PlaywrightCharacter implements StanceInterfa
 //
 //        addPower(new HiddenHeatMechanic(player));
 //        heatBarUpdatedEvent();
-//        super.applyStartOfCombatLogic();
+        super.applyStartOfCombatLogic();
     }
 
 

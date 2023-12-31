@@ -115,7 +115,7 @@
   },
 
   "${modID}:Smashed": {
-    "NAME": "Sh!tfaced",
+    "NAME": "Smashed",
     "DESCRIPTION": "Blerghhhhh"
   },
 
@@ -164,5 +164,21 @@
       "I can't do that! I don't have it in me!",
       "I don't have enough heat"
     ]
+  },
+
+  "${modID}:FrontKick": {
+    "NAME": "Front Kick",
+    "DESCRIPTION": "Deal !D! ${modID}:light damage. Enter ${modID}:Bruiser."
+  },
+
+  "${modID}:QuickBlock": {
+    "NAME": "Quick Block",
+    "DESCRIPTION": "Gain !B! block. Enter ${modID}:Tank."
+  },
+
+  "${modID}:Quickstep": {
+    "NAME": "Quickstep",
+    "DESCRIPTION": "${modID}:Reaction NL ${modID}:Evade damage that is !B! or lower.",
+    "UPGRADE_DESCRIPTION": "${modID}:Reaction NL ${modID}:Evade damage that is !B! or lower. NL Draw an attack card from the draw pile."
   }
 }

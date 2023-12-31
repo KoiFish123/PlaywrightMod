@@ -10,6 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.BaseCard;
 import crownsguard.character.PlaywrightCharacter;
 import crownsguard.character.TheCrownsguard;
+import crownsguard.damage.DrunkenAccurateDamage;
 import crownsguard.damage.HeatActionDamage;
 import crownsguard.damage.HeavyDamage;
 import crownsguard.powers.DrunkPower;
@@ -40,6 +41,7 @@ public class EXDrunkenThrust extends BaseCard {
 
         DamageModifierManager.addModifier(this, new HeatActionDamage());
         DamageModifierManager.addModifier(this, new HeavyDamage());
+        DamageModifierManager.addModifier(this, new DrunkenAccurateDamage());
     }
 
     @Override

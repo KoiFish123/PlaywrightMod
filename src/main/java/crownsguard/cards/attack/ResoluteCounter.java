@@ -47,6 +47,7 @@ public class ResoluteCounter extends BaseCard implements ReactionToDamageCard {
     public int onPlayerDamaged(int amount, DamageInfo info) {
         if (amount > player.currentBlock) {
             addToTop(new DiscardSpecificCardAction(this));
+            calculateCardDamage((AbstractMonster)info.owner);
             addToTop(new DamageAction(info.owner, new DamageInfo(player, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
             return amount;
         }

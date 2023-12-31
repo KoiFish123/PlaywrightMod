@@ -32,9 +32,9 @@ public class LightAttack extends BaseCard {
     private static final int UPG_DAMAGE = 2;
 
     public LightAttack() {
-        super(ID, info,true); //Pass the required information to the BaseCard constructor.
+        super(ID, info); //Pass the required information to the BaseCard constructor.
 
-        setDamage(DAMAGE,UPG_DAMAGE); //Sets the card's damage and how much it changes when upgraded.
+        setDamage(DAMAGE, UPG_DAMAGE); //Sets the card's damage and how much it changes when upgraded.
         tags.add(CardTags.STARTER_STRIKE);
 //        DamageModifierManager.addModifier(this, new BludgeoningDamage());
     }

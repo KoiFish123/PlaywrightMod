@@ -20,13 +20,12 @@ public class PremiumMalt extends BasePotion{
     private static final Color SPOTS_COLOR = CardHelper.getColor(255, 0, 255);
 
     public PremiumMalt() {
-        super(ID, 5, PotionRarity.COMMON, PotionSize.BOTTLE, LIQUID_COLOR, HYBRID_COLOR, SPOTS_COLOR);
+        super(ID, 4, PotionRarity.UNCOMMON, PotionSize.BOTTLE, LIQUID_COLOR, HYBRID_COLOR, SPOTS_COLOR);
     }
 
     @Override
     public String getDescription() {
-        // TODO: Complete the description
-        return null;
+        return potionStrings.DESCRIPTIONS[0] + potency + potionStrings.DESCRIPTIONS[1] + potency/2 + potionStrings.DESCRIPTIONS[2];
     }
 
     @Override
@@ -34,7 +33,7 @@ public class PremiumMalt extends BasePotion{
         if (player instanceof PlaywrightCharacter){
             if (AbstractDungeon.getCurrRoom().phase == AbstractRoom.RoomPhase.COMBAT) {
                 addToBot(new HealAction(player, player, potency));
-                addToBot(new ApplyPowerAction(player, player, new DrunkPower(player, 3), 3));
+                addToBot(new ApplyPowerAction(player, player, new DrunkPower(player, potency/2), potency/2));
             }
         }
     }

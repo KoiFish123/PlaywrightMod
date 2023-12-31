@@ -36,6 +36,7 @@ public class RushCombo extends BasePower {
         this.fontScale = 8.0F;
         this.amount += stackAmount;
         if (amount == 3){
+            this.flash();
             addToBot(new GainEnergyAction(1));
             addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
         }

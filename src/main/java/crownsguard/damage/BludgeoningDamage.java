@@ -12,14 +12,6 @@ public class BludgeoningDamage extends AbstractDamageModifier {
     public static final String ID = makeID(BludgeoningDamage.class.getSimpleName());
     public BludgeoningDamage(){}
 
-//    @Override
-//    public float atDamageFinalGive(float damage, DamageInfo.DamageType type, AbstractCreature target, AbstractCard card) {
-//        if (target != null)
-//            if (target.hasPower(BludgeoningResistance.POWER_ID))
-//                return super.atDamageFinalGive(damage/2, type, target, card);
-//        return super.atDamageFinalGive(damage, type, target, card);
-//    }
-
     @Override
     public AbstractDamageModifier makeCopy() {
         return new BludgeoningDamage();

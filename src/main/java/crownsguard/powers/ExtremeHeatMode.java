@@ -40,9 +40,32 @@ public class ExtremeHeatMode extends BasePower{
 
     @Override
     public void atStartOfTurn() {
-        addToBot(new GainEnergyAction(1));
-        addToBot(new DrawCardAction(1));
+        if (player instanceof PlaywrightCharacter) {
+            if (((PlaywrightCharacter) player).heat > 0) {
+                addToBot(new GainEnergyAction(1));
+                addToBot(new DrawCardAction(1));
+            } else
+                addToBot(new RemoveSpecificPowerAction(player, player,this));
+        }
     }
+
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        if (isPlayer){
+            if (player instanceof PlaywrightCharacter) {
+                ((PlaywrightCharacter)player).decreaseHeat(heatLossOverTurn);
+            }
+        }
+        super.atEndOfTurn(isPlayer);
+    }
+
+    @Override
+    public void onAfterCardPlayed(AbstractCard usedCard) {
+        if (((PlaywrightCharacter) player).heat == 0){
+            addToBot(new RemoveSpecificPowerAction(player, player,this));
+        }
+    }
+
 
     @Override
     public void onRemove() {

@@ -5,6 +5,7 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
+import com.megacrit.cardcrawl.actions.common.RemoveSpecificPowerAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
@@ -15,6 +16,7 @@ import crownsguard.character.PlaywrightCharacter;
 import crownsguard.character.TheCrownsguard;
 import crownsguard.damage.CounterDamage;
 import crownsguard.damage.HeavyDamage;
+import crownsguard.powers.ChargedPower;
 import crownsguard.util.CardStats;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
@@ -59,15 +61,17 @@ public class TigerStoppingFist extends BaseCard implements ReactionToDamageCard 
 
         super.applyPowers();
         this.baseDamage = realBaseDamage;
-        this.isDamageModified= (this.damage != this.baseDamage);
+        this.isDamageModified = (this.damage != this.baseDamage);
     }
 
     @Override
     public int onPlayerDamaged(int amount, DamageInfo info) {
-
         if (amount > player.currentBlock) {
+            if (player.hasPower(ChargedPower.POWER_ID)) addToTop(new RemoveSpecificPowerAction(player, player, ChargedPower.POWER_ID));
             addToTop(new DiscardSpecificCardAction(this));
-            addToTop(new DamageAction(info.owner, new DamageInfo(player, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+            calculateCardDamage((AbstractMonster)info.owner);
+
+            addToTop(new DamageAction(info.owner, new DamageInfo(player, damage + ((PlaywrightCharacter) player).maxHeat - ((PlaywrightCharacter) player).heat, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 
             return 0;
         }
