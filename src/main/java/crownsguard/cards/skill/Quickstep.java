@@ -1,20 +1,15 @@
 package crownsguard.cards.skill;
 
 import basemod.helpers.CardModifierManager;
-import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.actions.common.BetterDrawPileToHandAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.DrawPileToHandAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.powers.EnergizedPower;
 import crownsguard.cards.BaseCard;
 import crownsguard.cards.cardMod.ReactionCardMod;
 import crownsguard.cards.reactionInterface.ReactionToDamageCard;
-import crownsguard.character.TheCrownsguard;
-import crownsguard.stances.BruiserStance;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.util.CardStats;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
@@ -47,11 +42,13 @@ public class Quickstep extends BaseCard implements ReactionToDamageCard {
 
     @Override
     public int onPlayerDamaged(int amount, DamageInfo info) {
-        if (amount <= block) {
-            addToTop(new DiscardSpecificCardAction(this));
-            if (upgraded)
-                addToTop(new DrawPileToHandAction(1, CardType.ATTACK));
-            return 0;
+        if (amount > player.currentBlock){
+            if (amount-player.currentBlock <= this.block) {
+                addToTop(new DiscardSpecificCardAction(this));
+                if (upgraded)
+                    addToTop(new DrawPileToHandAction(1, CardType.ATTACK));
+                return 0;
+            }
         }
         return amount;
     }

@@ -9,9 +9,9 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.BaseCard;
 import crownsguard.character.PlaywrightCharacter;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.DrunkenAccurateDamage;
-import crownsguard.damage.HeatActionDamage;
+import crownsguard.damage.EXActionDamage;
 import crownsguard.damage.HeavyDamage;
 import crownsguard.powers.DrunkPower;
 import crownsguard.util.CardStats;
@@ -27,19 +27,18 @@ public class EXDrunkenThrust extends BaseCard {
             CardTarget.ENEMY,
             3
     );
-
     private static final int DAMAGE = 10;
-    private static final int HEAT_COST = 5;
+    private static final int EX_CHARGE_COST = 5;
     public EXDrunkenThrust() {
         super(ID, info,true);
 
         setDamage(DAMAGE);
         setExhaust(true);
         setSelfRetain(true);
-        this.baseMagicNumber = HEAT_COST;
+        this.baseMagicNumber = EX_CHARGE_COST;
         this.magicNumber = baseMagicNumber;
 
-        DamageModifierManager.addModifier(this, new HeatActionDamage());
+        DamageModifierManager.addModifier(this, new EXActionDamage());
         DamageModifierManager.addModifier(this, new HeavyDamage());
         DamageModifierManager.addModifier(this, new DrunkenAccurateDamage());
     }
@@ -63,7 +62,7 @@ public class EXDrunkenThrust extends BaseCard {
     @Override
     public void use(AbstractPlayer p, AbstractMonster m) {
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.SMASH));
-        ((PlaywrightCharacter)p).decreaseHeatWhenAttack(this.magicNumber);
+        ((PlaywrightCharacter)p).decreaseEXChargeWhenAttack(this.magicNumber);
         addToBot(new RemoveSpecificPowerAction(p,p,DrunkPower.POWER_ID));
     }
 }

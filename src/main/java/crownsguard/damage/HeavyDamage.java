@@ -20,14 +20,6 @@ public class HeavyDamage extends AbstractDamageModifier{
     @Override
     public void onDamageModifiedByBlock(DamageInfo info, int unblockedAmount, int blockedAmount, AbstractCreature target) {
         if (unblockedAmount >= 0 && blockedAmount > 0){
-            AbstractDungeon.actionManager.addToTop(
-                    new AbstractGameAction() {
-                        @Override
-                        public void update() {
-                            AbstractDungeon.effectList.add(new BlockedWordEffect(target, target.hb.cX, target.hb.cY, "Block Broken"));
-                        }
-                    }
-            );
             addToTop(new ApplyPowerAction(target, info.owner, new VulnerablePower(target, 1, false)));
             addToTop(new ApplyPowerAction(target, info.owner, new WeakPower(target, 1, false)));
         }

@@ -2,12 +2,10 @@ package crownsguard.powers;
 
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import crownsguard.damage.BludgeoningDamage;
-import crownsguard.damage.HeatActionDamage;
 
 
 import static crownsguard.CrownsguardMod.makeID;

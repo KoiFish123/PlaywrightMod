@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.actions.watcher.ChangeStanceAction;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.BaseCard;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.stances.TankStance;
 import crownsguard.util.CardStats;
 

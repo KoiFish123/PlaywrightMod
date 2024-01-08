@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.vfx.ObtainPotionEffect;
 import crownsguard.cards.BaseCard;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.potions.PremiumMalt;
 import crownsguard.util.CardStats;
 

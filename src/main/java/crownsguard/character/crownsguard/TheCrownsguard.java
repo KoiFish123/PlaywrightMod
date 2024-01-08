@@ -1,4 +1,4 @@
-package crownsguard.character;
+package crownsguard.character.crownsguard;
 
 import basemod.abstracts.CustomEnergyOrb;
 import basemod.animations.SpriterAnimation;
@@ -18,18 +18,19 @@ import com.megacrit.cardcrawl.localization.CharacterStrings;
 import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
-import crownsguard.cards.attack.TigerStoppingFist;
-import crownsguard.powers.HiddenHeatMechanic;
-import crownsguard.relics.AzureDragonSpirit;
+import crownsguard.cards.attack.EXRoadsideBrutality;
+import crownsguard.cards.attack.HeavyAttack;
+import crownsguard.cards.attack.LightAttack;
+import crownsguard.cards.skill.Guard;
+import crownsguard.character.PlaywrightCharacter;
+import crownsguard.character.StanceInterfaceForCharacter;
 import crownsguard.relics.CrownsguardBadge;
-import crownsguard.relics.EnmaSpirit;
 import crownsguard.relics.Kiwami;
 import crownsguard.stances.BruiserStance;
 import crownsguard.stances.TankStance;
 
 import java.util.ArrayList;
 
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
 import static crownsguard.CrownsguardMod.characterPath;
 import static crownsguard.CrownsguardMod.makeID;
 
@@ -58,12 +59,12 @@ public class TheCrownsguard extends PlaywrightCharacter implements StanceInterfa
     private static final String SHOULDER_2 = characterPath("shoulder2.png");
     private static final String CORPSE = characterPath("corpse.png"); //Corpse is when you die.
 
-    // Heat bar color for Bruiser Stance
+    // EX Gauge color for Bruiser Stance
     Color lightHbBarColorBruiser = new Color(1.0F, 0.6F, 0.2F, 0.0F);
     Color darkHbBarColorBruiser = new Color(0.8F, 0.4F, 0.1F, 0.0F);
     Color hbTextColorBruiser = new Color(1.0F, 0.55F, 0.25F, 0.0F);
 
-    // Heat bar color for Tank Stance
+    // EX Gauge color for Tank Stance
     Color lightHbBarColorTank = new Color(0.65F, 0.45F, 0.95F, 0.0F);
     Color darkHbBarColorTank = new Color(0.45F, 0.25F, 0.8F, 0.0F);
     Color hbTextColorTank = new Color(0.75F, 0.55F, 0.95F, 0.0F);
@@ -110,12 +111,19 @@ public class TheCrownsguard extends PlaywrightCharacter implements StanceInterfa
         ArrayList<String> retVal = new ArrayList<>();
         //List of IDs of cards for your starting deck.
         //If you want multiple of the same card, you have to add it multiple times.
-//        retVal.add(Strike_Red.ID);
-//        retVal.add(Strike_Red.ID);
-//        retVal.add(Defend_Blue.ID);
-//        retVal.add(Defend_Blue.ID);
-//        retVal.add(Neutralize.ID);
-        retVal.add(TigerStoppingFist.ID);
+
+        retVal.add(LightAttack.ID);
+        retVal.add(LightAttack.ID);
+        retVal.add(LightAttack.ID);
+        retVal.add(LightAttack.ID);
+        retVal.add(LightAttack.ID);
+        retVal.add(Guard.ID);
+        retVal.add(Guard.ID);
+        retVal.add(Guard.ID);
+        retVal.add(Guard.ID);
+        retVal.add(HeavyAttack.ID);
+        retVal.add(EXRoadsideBrutality.ID);
+
 
         return retVal;
     }
@@ -240,23 +248,14 @@ public class TheCrownsguard extends PlaywrightCharacter implements StanceInterfa
     @Override
     public void applyStartOfCombatLogic() {
         this.maxDrunk = 7;
-//        if (!this.hasRelic(EnmaSpirit.ID))
-//            this.heat = 0;
-//
-//        this.maxHeat = 15;
-//
-//        if (this.hasRelic(AzureDragonSpirit.ID))
-//            this.maxHeat = 20;
-//
-//        addPower(new HiddenHeatMechanic(player));
-//        heatBarUpdatedEvent();
+
         super.applyStartOfCombatLogic();
     }
 
 
     @Override
     public void onStanceChange(String id) {
-        heatColorChange(id);
+        exGaugeColorChange(id);
         transferPowerOnStanceChange(getPowerTypeForCurrentStance(id));
     }
 
@@ -266,17 +265,17 @@ public class TheCrownsguard extends PlaywrightCharacter implements StanceInterfa
         return null;
     }
 
-    public void heatColorChange(String id){
+    public void exGaugeColorChange(String id){
 
         if (id.equals(BruiserStance.STANCE_ID)) {
-            super.heatColorChangeOnStanceChange(lightHbBarColorBruiser,darkHbBarColorBruiser,hbTextColorBruiser);
+            super.exGaugeColorChangeOnStanceChange(lightHbBarColorBruiser,darkHbBarColorBruiser,hbTextColorBruiser);
 
-            heatBarUpdatedEvent();
+            exGaugeBarUpdatedEvent();
         }
         if (id.equals(TankStance.STANCE_ID)) {
-            super.heatColorChangeOnStanceChange(lightHbBarColorTank,darkHbBarColorTank,hbTextColorTank);
+            super.exGaugeColorChangeOnStanceChange(lightHbBarColorTank,darkHbBarColorTank,hbTextColorTank);
 
-            heatBarUpdatedEvent();
+            exGaugeBarUpdatedEvent();
         }
     }
 }

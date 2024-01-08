@@ -21,8 +21,8 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.ui.panels.energyorb.EnergyOrbInterface;
-import crownsguard.powers.ExtremeHeatMode;
-import crownsguard.powers.HiddenHeatMechanic;
+import crownsguard.powers.EXBoost;
+import crownsguard.powers.HiddenEXMechanic;
 import crownsguard.relics.AzureDragonSpirit;
 import crownsguard.relics.EnmaSpirit;
 import crownsguard.relics.WhiteTigerSpirit;
@@ -35,28 +35,28 @@ import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
 
 /*
 - This is where I go in detail for my custom characters
-- Most (if not all) of them will use a resource call Heat
+- Most (if not all) of them will use a resource call EX Gauge
 - I know there's a lot of details, but I want the gameplay to be as fluid as possible
  */
-public class PlaywrightCharacter extends CustomPlayer implements HeatInterface {
+public class PlaywrightCharacter extends CustomPlayer implements EXInterface {
 
     public int maxDrunk;
 
-    public int heat;
+    public int exCharge;
 
-    public int maxHeat;
+    public int maxEXCharge;
 
-    private float heatBarWidth;
+    private float exBarWidth;
 
-    private float targetHeatBarWidth;
+    private float targetEXBarWidth;
 
-    private static final float HEAT_BAR_HEIGHT = 20.0F * Settings.scale;
+    private static final float EX_BAR_HEIGHT = 20.0F * Settings.scale;
 
-    private static final float HEAT_BG_OFFSET_X = 31.0F * Settings.scale;
+    private static final float EX_BG_OFFSET_X = 31.0F * Settings.scale;
 
-    private static final float HEAT_BAR_OFFSET_Y = -28.0F * Settings.scale;
+    private static final float EX_BAR_OFFSET_Y = -28.0F * Settings.scale;
 
-    private static final float HEAT_TEXT_OFFSET_Y = 6.0F * Settings.scale;
+    private static final float EX_TEXT_OFFSET_Y = 6.0F * Settings.scale;
 
 
     private Color hbBgColor;
@@ -69,11 +69,11 @@ public class PlaywrightCharacter extends CustomPlayer implements HeatInterface {
 
     private Color hbTextColor;
 
-    private float heatHideTimer = 0.0F;
+    private float EXHideTimer = 0.0F;
 
-    private float heatBarAnimTimer = 0.0F;
+    private float exBarAnimTimer = 0.0F;
 
-    public boolean hideHeat;
+    public boolean hideEX;
 
     private float particleTimer = 0.0F;
 
@@ -186,92 +186,93 @@ public class PlaywrightCharacter extends CustomPlayer implements HeatInterface {
     @Override
     public void applyStartOfCombatLogic() {
         if (!this.hasRelic(EnmaSpirit.ID))
-            this.heat = 0;
+            this.exCharge = 0;
 
-        this.maxHeat = 15;
+        this.maxEXCharge = 15;
 
         if (this.hasRelic(AzureDragonSpirit.ID))
-            this.maxHeat = 20;
+            this.maxEXCharge = 20;
 
-        addPower(new HiddenHeatMechanic(player));
-        heatBarUpdatedEvent();
+        addPower(new HiddenEXMechanic(player));
+        exGaugeBarUpdatedEvent();
         super.applyStartOfCombatLogic();
     }
     
-    public boolean heatIncreasedThisTurn = false;
+    public boolean exGaugeIncreasedThisTurn = false;
 
-    public void increaseHeat(int num) {
-        // Increase heat gain from source other thank attack while holding this relic
+    public void increaseEXCharge(int num) {
+        // Increase EX Gauge gain from source other thank attack while holding this relic
         if (player.hasRelic(WhiteTigerSpirit.ID))
             num += 1;
 
-        if (player.hasPower(ExtremeHeatMode.POWER_ID) && num > 0)
+        if (player.hasPower(EXBoost.POWER_ID) && num > 0)
             num = 0;
 
-        heatIncreasedThisTurn = true;
-        updateHeat(num);
+        exGaugeIncreasedThisTurn = true;
+        updateEXGauge(num);
     }
 
-    public void increaseHeatThroughAttack(int num) {
-        if (player.hasPower(ExtremeHeatMode.POWER_ID) && num > 0) {
+    public void increaseEXChargeThroughAttack(int num) {
+        if (player.hasPower(EXBoost.POWER_ID) && num > 0) {
             num = 0;
         }
-        heatIncreasedThisTurn = true;
-        updateHeat(num);
+        exGaugeIncreasedThisTurn = true;
+        updateEXGauge(num);
     }
 
-    public void decreaseHeat(int num) {
-        updateHeat(-num);
+    public void decreaseEXCharge(int num) {
+        updateEXGauge(-num);
     }
 
-    public void decreaseHeatWhenAttack(int num) {
-        updateHeat(-num);
+    public void decreaseEXChargeWhenAttack(int num) {
+        updateEXGauge(-num);
 
         // If has relic YellowDragonSpirit, heal 1
         if (player.hasRelic(YellowDragonSpirit.ID))
             AbstractDungeon.actionManager.addToTop(new HealAction(player,player,1));
     }
 
-    public void decreaseHeatWhenAttacked(int num) {
-        if (player.hasPower(ExtremeHeatMode.POWER_ID) && num > 0) {
+    public void decreaseEXChargeWhenAttacked(int num) {
+        if (player.hasPower(EXBoost.POWER_ID) && num > 0) {
             num = 0;
         }
-        updateHeat(-num);
+        updateEXGauge(-num);
     }
 
-    public void decreaseHeatFromExtremeHeat(int heatOnActivation) {
-        this.heat = Math.min(this.maxHeat, Math.max(0, this.heat - heatOnActivation));
-        heatBarUpdatedEvent();
+    public void decreaseEXChargeFromEXBoost(int exGaugeOnActivation) {
+        this.exCharge = Math.min(this.maxEXCharge, Math.max(0, this.exCharge - exGaugeOnActivation));
+        exGaugeBarUpdatedEvent();
     }
 
     @Override
     public void applyEndOfTurnTriggers() {
-        if (!heatIncreasedThisTurn && !player.hasPower(ExtremeHeatMode.POWER_ID)) decreaseHeat(1);
-        heatIncreasedThisTurn = false;
+        if (!exGaugeIncreasedThisTurn && !player.hasPower(EXBoost.POWER_ID)) decreaseEXCharge(1);
+        exGaugeIncreasedThisTurn = false;
+        super.applyEndOfTurnTriggers();
     }
 
-    public void updateHeat(int num) {
-        int oldHeat = this.heat;
-        this.heat = Math.min(this.maxHeat, Math.max(0, this.heat + num));
+    public void updateEXGauge(int num) {
+        int oldEXGauge = this.exCharge;
+        this.exCharge = Math.min(this.maxEXCharge, Math.max(0, this.exCharge + num));
 
-        int oldPower = oldHeat / 5;
-        int newPower = this.heat / 5;
+        int oldPower = oldEXGauge / 5;
+        int newPower = this.exCharge / 5;
 
         if (newPower != oldPower) {
             adjustPower(newPower - oldPower, currentPowerIncrease);
         }
-        heatBarUpdatedEvent();
+        exGaugeBarUpdatedEvent();
     }
 
-    public void updateHeatAfterExitExtremeHeat(int heatOnActivation) {
+    public void updateEXGaugeAfterExitEXBoost(int exGaugeOnActivation) {
 
-        int oldPower = heatOnActivation / 5;
-        int newPower = this.heat / 5;
+        int oldPower = exGaugeOnActivation / 5;
+        int newPower = this.exCharge / 5;
 
         if (newPower != oldPower) {
             adjustPower(newPower - oldPower, currentPowerIncrease);
         }
-        heatBarUpdatedEvent();
+        exGaugeBarUpdatedEvent();
     }
 
     private void adjustPower(int powerDifference, String powerToAdjust) {
@@ -304,7 +305,7 @@ public class PlaywrightCharacter extends CustomPlayer implements HeatInterface {
     }
 
     public void transferPowerOnStanceChange(String newPowerIncrease){
-        int powerAdjust = heat/5;
+        int powerAdjust = exCharge /5;
         System.out.println(currentPowerIncrease);
         System.out.println(newPowerIncrease);
 
@@ -320,17 +321,17 @@ public class PlaywrightCharacter extends CustomPlayer implements HeatInterface {
         }
     }
 
-    public void heatBarUpdatedEvent() {
-        this.heatBarAnimTimer = 1.2F;
-        this.targetHeatBarWidth = this.hb.width * this.heat / this.maxHeat;
-        if (this.maxHeat == this.heat) {
-            this.heatBarWidth = this.targetHeatBarWidth;
-        } else if (this.heat == 0) {
-            this.heatBarWidth = 0.0F;
-            this.targetHeatBarWidth = 0.0F;
+    public void exGaugeBarUpdatedEvent() {
+        this.exBarAnimTimer = 1.2F;
+        this.targetEXBarWidth = this.hb.width * this.exCharge / this.maxEXCharge;
+        if (this.maxEXCharge == this.exCharge) {
+            this.exBarWidth = this.targetEXBarWidth;
+        } else if (this.exCharge == 0) {
+            this.exBarWidth = 0.0F;
+            this.targetEXBarWidth = 0.0F;
         }
-        if (this.targetHeatBarWidth > this.heatBarWidth)
-            this.heatBarWidth = this.targetHeatBarWidth;
+        if (this.targetEXBarWidth > this.exBarWidth)
+            this.exBarWidth = this.targetEXBarWidth;
     }
 
     protected void updateHealthBar() {
@@ -342,31 +343,31 @@ public class PlaywrightCharacter extends CustomPlayer implements HeatInterface {
 
     private void updateEbHoverFade() {
         if (this.healthHb.hovered) {
-            this.heatHideTimer -= Gdx.graphics.getDeltaTime() * 4.0F;
-            if (this.heatHideTimer < 0.2F)
-                this.heatHideTimer = 0.2F;
+            this.EXHideTimer -= Gdx.graphics.getDeltaTime() * 4.0F;
+            if (this.EXHideTimer < 0.2F)
+                this.EXHideTimer = 0.2F;
         } else {
-            this.heatHideTimer += Gdx.graphics.getDeltaTime() * 4.0F;
-            if (this.heatHideTimer > 1.0F)
-                this.heatHideTimer = 1.0F;
+            this.EXHideTimer += Gdx.graphics.getDeltaTime() * 4.0F;
+            if (this.EXHideTimer > 1.0F)
+                this.EXHideTimer = 1.0F;
         }
     }
 
     private void updateEbAlpha() {
-        if (this.hb.hovered && this.heat >= 20) {
+        if (this.hb.hovered && this.exCharge >= 20) {
             this.hbShadowColor = new Color(0.67058825F, 0.9764706F, 1.0F, 0.0F);
         } else {
             this.hbShadowColor = new Color(0.0F, 0.0F, 0.0F, 0.0F);
         }
         if (this.isEscaping) {
-            this.targetHeatBarWidth = 0.0F;
+            this.targetEXBarWidth = 0.0F;
             this.hbBgColor.a = this.hbAlpha * 0.75F;
             this.hbShadowColor.a = this.hbAlpha * 0.5F;
         } else {
             this.hbBgColor.a = this.hbAlpha * 0.5F;
             this.hbShadowColor.a = this.hbAlpha * 0.2F;
         }
-        if (this.hb.hovered && this.heat >= 20)
+        if (this.hb.hovered && this.exCharge >= 20)
             this.hbShadowColor.a = this.hbAlpha * 0.8F;
         this.hbTextColor.a = this.hbAlpha;
         this.lightHbBarColor.a = this.hbAlpha;
@@ -374,66 +375,65 @@ public class PlaywrightCharacter extends CustomPlayer implements HeatInterface {
     }
 
     private void updateEbDamageAnimation() {
-        if (this.heatBarAnimTimer > 0.0F)
-            this.heatBarAnimTimer -= Gdx.graphics.getDeltaTime();
-        if (this.heatBarWidth != this.targetHeatBarWidth && this.heatBarAnimTimer <= 0.0F && this.targetHeatBarWidth < this.heatBarWidth)
-            this.heatBarWidth = MathHelper.uiLerpSnap(this.heatBarWidth, this.targetHeatBarWidth);
+        if (this.exBarAnimTimer > 0.0F)
+            this.exBarAnimTimer -= Gdx.graphics.getDeltaTime();
+        if (this.exBarWidth != this.targetEXBarWidth && this.exBarAnimTimer <= 0.0F && this.targetEXBarWidth < this.exBarWidth)
+            this.exBarWidth = MathHelper.uiLerpSnap(this.exBarWidth, this.targetEXBarWidth);
     }
 
     public void renderHealth(SpriteBatch sb) {
         super.renderHealth(sb);
         if (Settings.hideCombatElements)
             return;
-        if (this.hideHeat)
+        if (this.hideEX)
             return;
         float x = this.hb.cX - this.hb.width / 2.0F;
         float y = this.hb.cY + this.hb.height / 2.0F;
-        renderHeatBg(sb, x, y);
+        renderEXBarBg(sb, x, y);
         renderWhiteStanceBar(sb, x, y);
         renderGoldenStanceBar(sb, x, y);
         renderStanceText(sb, y);
     }
 
-    private void renderHeatBg(SpriteBatch sb, float x, float y) {
+    private void renderEXBarBg(SpriteBatch sb, float x, float y) {
         sb.setColor(this.hbShadowColor);
-        sb.draw(ImageMaster.HB_SHADOW_L, x - HEAT_BAR_HEIGHT, y - HEAT_BG_OFFSET_X + 3.0F * Settings.scale, HEAT_BAR_HEIGHT, HEAT_BAR_HEIGHT);
-        sb.draw(ImageMaster.HB_SHADOW_B, x, y - HEAT_BG_OFFSET_X + 3.0F * Settings.scale, this.hb.width, HEAT_BAR_HEIGHT);
-        sb.draw(ImageMaster.HB_SHADOW_R, x + this.hb.width, y - HEAT_BG_OFFSET_X + 3.0F * Settings.scale, HEAT_BAR_HEIGHT, HEAT_BAR_HEIGHT);
+        sb.draw(ImageMaster.HB_SHADOW_L, x - EX_BAR_HEIGHT, y - EX_BG_OFFSET_X + 3.0F * Settings.scale, EX_BAR_HEIGHT, EX_BAR_HEIGHT);
+        sb.draw(ImageMaster.HB_SHADOW_B, x, y - EX_BG_OFFSET_X + 3.0F * Settings.scale, this.hb.width, EX_BAR_HEIGHT);
+        sb.draw(ImageMaster.HB_SHADOW_R, x + this.hb.width, y - EX_BG_OFFSET_X + 3.0F * Settings.scale, EX_BAR_HEIGHT, EX_BAR_HEIGHT);
         sb.setColor(this.hbBgColor);
-        if (this.heat != this.maxHeat) {
-            sb.draw(ImageMaster.HEALTH_BAR_L, x - HEAT_BAR_HEIGHT, y + HEAT_BAR_OFFSET_Y, HEAT_BAR_HEIGHT, HEAT_BAR_HEIGHT);
-            sb.draw(ImageMaster.HEALTH_BAR_B, x, y + HEAT_BAR_OFFSET_Y, this.hb.width, HEAT_BAR_HEIGHT);
-            sb.draw(ImageMaster.HEALTH_BAR_R, x + this.hb.width, y + HEAT_BAR_OFFSET_Y, HEAT_BAR_HEIGHT, HEAT_BAR_HEIGHT);
+        if (this.exCharge != this.maxEXCharge) {
+            sb.draw(ImageMaster.HEALTH_BAR_L, x - EX_BAR_HEIGHT, y + EX_BAR_OFFSET_Y, EX_BAR_HEIGHT, EX_BAR_HEIGHT);
+            sb.draw(ImageMaster.HEALTH_BAR_B, x, y + EX_BAR_OFFSET_Y, this.hb.width, EX_BAR_HEIGHT);
+            sb.draw(ImageMaster.HEALTH_BAR_R, x + this.hb.width, y + EX_BAR_OFFSET_Y, EX_BAR_HEIGHT, EX_BAR_HEIGHT);
         }
     }
 
     private void renderWhiteStanceBar(SpriteBatch sb, float x, float y) {
         sb.setColor(this.lightHbBarColor);
-        sb.draw(ImageMaster.HEALTH_BAR_L, x - HEAT_BAR_HEIGHT, y + HEAT_BAR_OFFSET_Y, HEAT_BAR_HEIGHT, HEAT_BAR_HEIGHT);
-        sb.draw(ImageMaster.HEALTH_BAR_B, x, y + HEAT_BAR_OFFSET_Y, this.heatBarWidth, HEAT_BAR_HEIGHT);
-        sb.draw(ImageMaster.HEALTH_BAR_R, x + this.heatBarWidth, y + HEAT_BAR_OFFSET_Y, HEAT_BAR_HEIGHT, HEAT_BAR_HEIGHT);
+        sb.draw(ImageMaster.HEALTH_BAR_L, x - EX_BAR_HEIGHT, y + EX_BAR_OFFSET_Y, EX_BAR_HEIGHT, EX_BAR_HEIGHT);
+        sb.draw(ImageMaster.HEALTH_BAR_B, x, y + EX_BAR_OFFSET_Y, this.exBarWidth, EX_BAR_HEIGHT);
+        sb.draw(ImageMaster.HEALTH_BAR_R, x + this.exBarWidth, y + EX_BAR_OFFSET_Y, EX_BAR_HEIGHT, EX_BAR_HEIGHT);
     }
 
     private void renderGoldenStanceBar(SpriteBatch sb, float x, float y) {
         sb.setColor(this.darkHbBarColor);
-        if (this.heat > 0)
-            sb.draw(ImageMaster.HEALTH_BAR_L, x - HEAT_BAR_HEIGHT, y + HEAT_BAR_OFFSET_Y, HEAT_BAR_HEIGHT, HEAT_BAR_HEIGHT);
-        sb.draw(ImageMaster.HEALTH_BAR_B, x, y + HEAT_BAR_OFFSET_Y, this.targetHeatBarWidth, HEAT_BAR_HEIGHT);
-        sb.draw(ImageMaster.HEALTH_BAR_R, x + this.targetHeatBarWidth, y + HEAT_BAR_OFFSET_Y, HEAT_BAR_HEIGHT, HEAT_BAR_HEIGHT);
+        if (this.exCharge > 0)
+            sb.draw(ImageMaster.HEALTH_BAR_L, x - EX_BAR_HEIGHT, y + EX_BAR_OFFSET_Y, EX_BAR_HEIGHT, EX_BAR_HEIGHT);
+        sb.draw(ImageMaster.HEALTH_BAR_B, x, y + EX_BAR_OFFSET_Y, this.targetEXBarWidth, EX_BAR_HEIGHT);
+        sb.draw(ImageMaster.HEALTH_BAR_R, x + this.targetEXBarWidth, y + EX_BAR_OFFSET_Y, EX_BAR_HEIGHT, EX_BAR_HEIGHT);
     }
 
     private void renderStanceText(SpriteBatch sb, float y) {
         float tmp = this.hbTextColor.a;
-        this.hbTextColor.a *= this.heatHideTimer;
-//        FontHelper.renderFontCentered(sb, FontHelper.healthInfoFont, this.heat + "/" + this.maxHeat + "(" + this.totalHeat + ")", this.hb.cX, y + HEAT_BAR_OFFSET_Y + HEAT_TEXT_OFFSET_Y + 5.0F * Settings.scale, this.hbTextColor);
-        FontHelper.renderFontCentered(sb, FontHelper.healthInfoFont, this.heat + "/" + this.maxHeat, this.hb.cX, y + HEAT_BAR_OFFSET_Y + HEAT_TEXT_OFFSET_Y + 5.0F * Settings.scale, this.hbTextColor);
+        this.hbTextColor.a *= this.EXHideTimer;
+        FontHelper.renderFontCentered(sb, FontHelper.healthInfoFont, this.exCharge + "/" + this.maxEXCharge, this.hb.cX, y + EX_BAR_OFFSET_Y + EX_TEXT_OFFSET_Y + 5.0F * Settings.scale, this.hbTextColor);
         this.hbTextColor.a = tmp;
     }
 
-    public void heatColorChangeOnStanceChange(Color lightHbBarColor, Color darkHbBarColor, Color hbTextColor) {
+    public void exGaugeColorChangeOnStanceChange(Color lightHbBarColor, Color darkHbBarColor, Color hbTextColor) {
         this.lightHbBarColor = lightHbBarColor;
         this.darkHbBarColor = darkHbBarColor;
         this.hbTextColor = hbTextColor;
-        heatBarUpdatedEvent();
+        exGaugeBarUpdatedEvent();
     }
 }

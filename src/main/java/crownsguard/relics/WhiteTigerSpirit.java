@@ -1,15 +1,7 @@
 package crownsguard.relics;
 
-import com.megacrit.cardcrawl.actions.utility.UseCardAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.monsters.AbstractMonster;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import crownsguard.CustomTagEnum;
-import crownsguard.character.PlaywrightCharacter;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 
-import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
 import static crownsguard.CrownsguardMod.makeID;
 
 public class WhiteTigerSpirit extends BaseRelic{
@@ -20,5 +12,10 @@ public class WhiteTigerSpirit extends BaseRelic{
 
     public WhiteTigerSpirit() {
         super(ID, NAME, TheCrownsguard.Enums.COLOR_ORANGE, RARITY, SOUND);
+    }
+
+    @Override
+    public String getUpdatedDescription() {
+        return this.DESCRIPTIONS[0];
     }
 }

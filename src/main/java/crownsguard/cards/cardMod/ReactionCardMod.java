@@ -1,6 +1,7 @@
 package crownsguard.cards.cardMod;
 
 import basemod.abstracts.AbstractCardModifier;
+import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -15,23 +16,36 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
  */
 public class ReactionCardMod extends AbstractCardModifier {
 
+    private int reactionTimer;
+
     @Override
     public void onUse(AbstractCard card, AbstractCreature target, UseCardAction action) {
         AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1));
-//        if (player.hasRelic(WhiteSnakeWisdom.ID))
-//            AbstractDungeon.actionManager.addToBottom(new DrawCardAction(1));
-        /*
-        TODO: White Snake Wisdom
-         - Create the relic WhiteSnakeWisdom
-         - Add a check to the relic to see if the card play is a reaction to pulse() it
-         */
     }
+
     public void onRetained(AbstractCard card) {
-        card.selfRetain = false;
+        if (reactionTimer > 0)
+            reactionTimer--;
+
+        if (reactionTimer == 0){
+            card.selfRetain = false;
+        }
+    }
+
+    @Override
+    public Color getGlow(AbstractCard card) {
+        if (this.reactionTimer == 0)
+            return Color.RED;
+        if (this.reactionTimer == 1)
+            return Color.YELLOW;
+        if (this.reactionTimer > 1)
+            return Color.GREEN;
+        return super.getGlow(card);
     }
 
     @Override
     public void onDrawn(AbstractCard card) {
+        this.reactionTimer = 1;
         card.selfRetain = true;
     }
 

@@ -36,6 +36,15 @@ public class TempDamageResistance extends BasePower{
     }
 
     @Override
+    public float atDamageFinalReceive(float damage, DamageInfo.DamageType type) {
+        if (type == DamageInfo.DamageType.NORMAL || type == DamageInfo.DamageType.THORNS)
+            return super.atDamageFinalReceive(damage/2, type);
+
+
+        return super.atDamageFinalReceive(damage, type);
+    }
+
+    @Override
     public void atStartOfTurn() {
         addToBot(new ReducePowerAction(this.owner, this.owner, TempDamageResistance.POWER_ID, 1));
         if (this.amount == 0) {

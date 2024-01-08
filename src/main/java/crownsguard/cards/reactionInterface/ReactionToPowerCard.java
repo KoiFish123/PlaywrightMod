@@ -5,7 +5,11 @@ import com.megacrit.cardcrawl.powers.AbstractPower;
 
 public interface ReactionToPowerCard {
 
-    void onPowerAppliedToPlayer(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source);
+    default void onPowerAppliedToPlayer(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source) {
+        // When power is apply to the player
+    }
 
-    void onPowerAppliedToMonster(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source);
+    default void onPowerAppliedToMonster(AbstractPower abstractPower, AbstractCreature target, AbstractCreature source) {
+        // When power is apply to a monster
+    }
 }

@@ -69,7 +69,7 @@ public class DrunkPower extends BasePower {
     }
 
     public boolean doesAttackHit() {
-        // For every level of Drunk, attacks gain 1 more heat but has a 10% chance of missing
+        // For every level of Drunk, attacks gain 1 more EX Charge but has a 10% chance of missing
 
         Random rand = new Random();
         int randomNumber = AbstractDungeon.miscRng.random(1, 10);
@@ -82,7 +82,7 @@ public class DrunkPower extends BasePower {
     @Override
     public int onAttackToChangeDamage(DamageInfo info, int damageAmount) {
 
-        // // For Playwright creature (with Heat mechanic)
+        // // For Playwright creature (with EX mechanic)
         if (info.owner instanceof PlaywrightCharacter) {
             if (info.type == DamageInfo.DamageType.NORMAL) {
                 for (AbstractDamageModifier mod : DamageModifierManager.getDamageMods(info)) {
@@ -96,7 +96,7 @@ public class DrunkPower extends BasePower {
             }
         }
 
-        // For non-Playwright creature (no Heat mechanic)
+        // For non-Playwright creature (no EX mechanic)
         else {
             if (info.type == DamageInfo.DamageType.NORMAL) {
 

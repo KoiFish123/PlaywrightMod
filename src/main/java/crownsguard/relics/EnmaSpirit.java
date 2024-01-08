@@ -1,16 +1,15 @@
 package crownsguard.relics;
 
 
-import com.megacrit.cardcrawl.relics.AbstractRelic;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 
 import static crownsguard.CrownsguardMod.makeID;
 
 public class EnmaSpirit extends BaseRelic{
-    private static final String NAME = "EnmaSpirit"; //The name will be used for determining the image file as well as the ID.
-    public static final String ID = makeID(NAME); //This adds the mod's prefix to the relic ID, resulting in modID:MyRelic
-    private static final RelicTier RARITY = RelicTier.UNCOMMON; //The relic's rarity.
-    private static final LandingSound SOUND = LandingSound.MAGICAL; //The sound played when the relic is clicked.
+    private static final String NAME = "EnmaSpirit";
+    public static final String ID = makeID(NAME);
+    private static final RelicTier RARITY = RelicTier.UNCOMMON;
+    private static final LandingSound SOUND = LandingSound.MAGICAL;
 
 
     public EnmaSpirit() {
@@ -18,8 +17,9 @@ public class EnmaSpirit extends BaseRelic{
     }
 
     @Override
-    public AbstractRelic makeCopy() {
-        return new EnmaSpirit();
+    public void atBattleStartPreDraw() {
+        this.flash();
+        super.atBattleStartPreDraw();
     }
 
     @Override

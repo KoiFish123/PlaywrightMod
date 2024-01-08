@@ -8,14 +8,14 @@
   "Tank": {
     "NAME": "Tank",
     "DESCRIPTION": [
-      "While in this stance, gain 1 #yDexterity, plus an additional 1 #yDexterity for every 5 #yheat you have."
+      "While in this stance, gain 1 #yDexterity, plus an additional 1 #yDexterity for every 5 #yEX #yCharge you have."
     ]
   },
 
   "Bruiser": {
     "NAME": "Bruiser",
     "DESCRIPTION": [
-      "While in this stance, gain 1 #yStrength, plus an additional 1 #yStrength for every 5 #yheat you have."
+      "While in this stance, gain 1 #yStrength, plus an additional 1 #yStrength for every 5 #yEX #yCharge you have."
     ]
   }
 }

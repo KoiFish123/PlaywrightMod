@@ -5,7 +5,7 @@ import com.megacrit.cardcrawl.actions.common.GainBlockAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import crownsguard.character.PlaywrightCharacter;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
 import static crownsguard.CrownsguardMod.makeID;
@@ -24,13 +24,14 @@ public class BodhisattvaSpirit extends BaseRelic{
     @Override
     public void atTurnStart() {
         if (player instanceof PlaywrightCharacter) {
-            addToBot(new GainBlockAction(player, player, ((PlaywrightCharacter) player).heat * 2));
-            addToBot(new HealAction(player,player,((PlaywrightCharacter) player).heat));
+            this.flash();
+            addToBot(new GainBlockAction(player, player, ((PlaywrightCharacter) player).exCharge * 2));
+            addToBot(new HealAction(player,player,((PlaywrightCharacter) player).exCharge));
             AbstractDungeon.actionManager.addToBottom(
                     new AbstractGameAction() {
                         @Override
                         public void update() {
-                            ((PlaywrightCharacter) player).decreaseHeatWhenAttack(((PlaywrightCharacter) player).heat);
+                            ((PlaywrightCharacter) player).decreaseEXChargeWhenAttack(((PlaywrightCharacter) player).exCharge);
                         }
                     }
             );

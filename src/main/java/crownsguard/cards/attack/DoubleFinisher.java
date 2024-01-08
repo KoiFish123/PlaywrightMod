@@ -9,8 +9,7 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.BaseCard;
-import crownsguard.character.TheCrownsguard;
-import crownsguard.damage.BludgeoningDamage;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.HeavyDamage;
 import crownsguard.util.CardStats;
 
@@ -26,8 +25,6 @@ public class DoubleFinisher extends BaseCard {
             CardTarget.ENEMY,
             1
     );
-
-
 
     private static final int DAMAGE = 8;
 

@@ -11,7 +11,6 @@ public class CustomTagEnum
     @SpireEnum
     public static AbstractCard.CardTags TAUNT;
 
-    @SpireEnum
-    public static AbstractPower.PowerType HEAT;
+    public static AbstractPower.PowerType EX_MECHANIC;
 
 }

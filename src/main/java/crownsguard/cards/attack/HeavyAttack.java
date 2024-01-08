@@ -9,7 +9,7 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.BaseCard;
 import crownsguard.character.PlaywrightCharacter;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.HeavyDamage;
 import crownsguard.util.CardStats;
 
@@ -25,10 +25,8 @@ public class HeavyAttack extends BaseCard {
             2
     );
 
-
-
     private static final int DAMAGE = 8;
-    private static final int UPG_DAMAGE = 3;
+    private static final int UPG_DAMAGE = 4;
 
     public HeavyAttack() {
         super(ID, info,true);
@@ -55,7 +53,7 @@ public class HeavyAttack extends BaseCard {
                     @Override
                     public void update() {
                         this.isDone = true;
-                        ((PlaywrightCharacter)p).increaseHeat(2);
+                        ((PlaywrightCharacter)p).increaseEXCharge(2);
                     }
                 }
         );

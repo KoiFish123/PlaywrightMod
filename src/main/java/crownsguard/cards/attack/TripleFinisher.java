@@ -3,14 +3,13 @@ package crownsguard.cards.attack;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.BaseCard;
 import crownsguard.character.PlaywrightCharacter;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.HeavyDamage;
 import crownsguard.util.CardStats;
 
@@ -54,7 +53,7 @@ public class TripleFinisher extends BaseCard {
                     @Override
                     public void update() {
                         this.isDone = true;
-                        ((PlaywrightCharacter)p).increaseHeat(magicNumber);
+                        ((PlaywrightCharacter)p).increaseEXCharge(magicNumber);
                     }
                 }
         );

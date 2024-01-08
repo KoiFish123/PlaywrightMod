@@ -13,7 +13,7 @@ import crownsguard.cards.cardMod.ReactionCardMod;
 import crownsguard.cards.BaseCard;
 import crownsguard.cards.reactionInterface.ReactionToDamageCard;
 import crownsguard.character.PlaywrightCharacter;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.CounterDamage;
 import crownsguard.damage.HeavyDamage;
 import crownsguard.powers.ChargedPower;
@@ -56,7 +56,7 @@ public class TigerStoppingFist extends BaseCard implements ReactionToDamageCard 
         int realBaseDamage = this.baseDamage;
 
         if (player instanceof PlaywrightCharacter) {
-            this.baseDamage += ((PlaywrightCharacter) player).maxHeat - ((PlaywrightCharacter) player).heat;
+            this.baseDamage += ((PlaywrightCharacter) player).maxEXCharge - ((PlaywrightCharacter) player).exCharge;
         }
 
         super.applyPowers();
@@ -71,7 +71,7 @@ public class TigerStoppingFist extends BaseCard implements ReactionToDamageCard 
             addToTop(new DiscardSpecificCardAction(this));
             calculateCardDamage((AbstractMonster)info.owner);
 
-            addToTop(new DamageAction(info.owner, new DamageInfo(player, damage + ((PlaywrightCharacter) player).maxHeat - ((PlaywrightCharacter) player).heat, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+            addToTop(new DamageAction(info.owner, new DamageInfo(player, damage + ((PlaywrightCharacter) player).maxEXCharge - ((PlaywrightCharacter) player).exCharge, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
 
             return 0;
         }

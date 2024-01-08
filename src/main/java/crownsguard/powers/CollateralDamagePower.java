@@ -34,11 +34,15 @@ public class CollateralDamagePower extends BasePower {
 
     @Override
     public void onAttack(DamageInfo info, int damageAmount, AbstractCreature target) {
-        if (player instanceof PlaywrightCharacter && player.stance.equals(TankStance.STANCE_ID))
-            if (info.type == DamageInfo.DamageType.NORMAL)
-                addToBot(new DamageAllEnemiesAction(player, DamageInfo.createDamageMatrix(amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.BLUNT_HEAVY));
+        if (owner instanceof PlaywrightCharacter) {
+            if (player.stance.ID.equals(TankStance.STANCE_ID))
+                if (damageAmount > 0 && info.type != DamageInfo.DamageType.THORNS && info.type != DamageInfo.DamageType.HP_LOSS) {
+                    addToBot(new DamageAllEnemiesAction(this.owner, DamageInfo.createDamageMatrix(this.amount, true), DamageInfo.DamageType.THORNS, AbstractGameAction.AttackEffect.BLUNT_HEAVY, true));
+                }
+        }
         super.onAttack(info, damageAmount, target);
     }
+
 
     @Override
     public void updateDescription() {

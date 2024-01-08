@@ -17,7 +17,7 @@ import crownsguard.cards.reactionInterface.ReactionToDrawCard;
 import crownsguard.cards.reactionInterface.ReactionToExhaustCard;
 import crownsguard.cards.reactionInterface.ReactionToPowerCard;
 import crownsguard.cards.skill.EmptySkill;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.potions.BasePotion;
 import crownsguard.relics.BaseRelic;
 import crownsguard.util.GeneralUtils;

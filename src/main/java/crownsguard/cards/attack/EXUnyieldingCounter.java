@@ -15,9 +15,9 @@ import crownsguard.cards.cardMod.ReactionCardMod;
 import crownsguard.cards.BaseCard;
 import crownsguard.cards.reactionInterface.ReactionToDamageCard;
 import crownsguard.character.PlaywrightCharacter;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.CounterDamage;
-import crownsguard.damage.HeatActionDamage;
+import crownsguard.damage.EXActionDamage;
 import crownsguard.damage.HeavyDamage;
 import crownsguard.util.CardStats;
 
@@ -47,10 +47,10 @@ public class EXUnyieldingCounter extends BaseCard implements ReactionToDamageCar
         this.baseMagicNumber = WEAK_AMOUNT;
         this.magicNumber = baseMagicNumber;
         setDamage(DAMAGE, UPG_DAMAGE);
-        DamageModifierManager.addModifier(this, new HeatActionDamage());
+        DamageModifierManager.addModifier(this, new EXActionDamage());
         DamageModifierManager.addModifier(this, new HeavyDamage());
         DamageModifierManager.addModifier(this, new CounterDamage());
-        // Since this is a Heat Action, I expect HiddenHeatMechanic to give no heat, despite being dealing Counter damage
+        // Since this is an EX Action, I expect HiddenEXMechanic to give no EX Charge, despite dealing Counter damage
     }
 
     @Override
@@ -69,7 +69,7 @@ public class EXUnyieldingCounter extends BaseCard implements ReactionToDamageCar
 
     @Override
     public int onPlayerDamaged(int amount, DamageInfo info) {
-        if (amount > player.currentBlock && player instanceof PlaywrightCharacter && ((PlaywrightCharacter) player).heat >= 5) {
+        if (amount > player.currentBlock && player instanceof PlaywrightCharacter && ((PlaywrightCharacter) player).exCharge >= 5) {
             addToTop(new DiscardSpecificCardAction(this));
             addToTop(new DamageAction(info.owner, new DamageInfo(player, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
             AbstractDungeon.actionManager.addToTop(
@@ -77,7 +77,7 @@ public class EXUnyieldingCounter extends BaseCard implements ReactionToDamageCar
                         @Override
                         public void update() {
                             this.isDone = true;
-                            ((PlaywrightCharacter)player).decreaseHeatWhenAttack(5);
+                            ((PlaywrightCharacter)player).decreaseEXChargeWhenAttack(5);
                         }
                     }
             );

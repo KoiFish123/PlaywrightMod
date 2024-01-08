@@ -49,13 +49,13 @@
       " damage to ALL enemies when you attack"]
   },
 
-  "${modID}:ExtremeHeatMode": {
-    "NAME": "Extreme Heat Mode",
+  "${modID}:EXBoost": {
+    "NAME": "EX Boost",
     "DESCRIPTIONS":[
       "Deal #g",
       " extra damage. Gain #g",
       " extra block. Draw an extra card and gain [E] per turn. NL Lose #r",
-      " #yHeat per turn."
+      " #yEX #yCharge per turn."
     ]
   },
 
@@ -63,7 +63,7 @@
     "NAME": "Drunk",
     "DESCRIPTIONS":[
       "Attacks give #g",
-      " more #yheat, but has a #r",
+      " more #yEX #yCharge, but has a #r",
       "% chance of dealing 0 damage. Lose 1 #yDrunk at the start of your turn.",
       "Missed"
     ]

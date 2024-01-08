@@ -5,10 +5,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.BaseCard;
 import crownsguard.stances.TankStance;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.util.CardStats;
-
-import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
 public class StanceSwitchingTank extends BaseCard {
     public static final String ID = makeID(StanceSwitchingTank.class.getSimpleName());

@@ -1,9 +1,8 @@
 package crownsguard.relics;
 
 import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import crownsguard.character.PlaywrightCharacter;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
 import static crownsguard.CrownsguardMod.makeID;
@@ -20,8 +19,15 @@ public class BlackTortoiseSpirit extends BaseRelic{
 
     @Override
     public int onAttacked(DamageInfo info, int damageAmount) {
-        if (player instanceof PlaywrightCharacter && player.currentBlock > 0 && ((PlaywrightCharacter) player).heat < 10 && info.type == DamageInfo.DamageType.NORMAL)
-            ((PlaywrightCharacter) player).increaseHeat(1);
+        if (player instanceof PlaywrightCharacter && player.currentBlock > 0 && ((PlaywrightCharacter) player).exCharge < 10 && info.type == DamageInfo.DamageType.NORMAL) {
+            this.flash();
+            ((PlaywrightCharacter) player).increaseEXCharge(1);
+        }
         return super.onAttacked(info, damageAmount);
+    }
+
+    @Override
+    public String getUpdatedDescription() {
+        return this.DESCRIPTIONS[0];
     }
 }

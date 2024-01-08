@@ -19,7 +19,7 @@
     "NAME": "Black Tortoise Spirit",
     "FLAVOR": "A solid defense will bring your strength",
     "DESCRIPTIONS": [
-      "While you have less than half your #yHeat, blocking attack raises your #yHeat by 1 if your block is not broken."
+      "While you have less than half your #yEX #yGauge, blocking attack raises your #yEX #yGauge by 1 if your block is not broken."
     ]
   },
 
@@ -27,7 +27,7 @@
     "NAME": "White Tiger Spirit",
     "FLAVOR": "Feral and full of fervor",
     "DESCRIPTIONS": [
-      "#yHeat gain from sources other than attacking increase by 1."
+      "#yEX #yCharge gain from sources other than attacking increase by 1."
     ]
   },
 
@@ -35,7 +35,7 @@
     "NAME": "Azure Dragon Spirit",
     "FLAVOR": "Go beyond your limit",
     "DESCRIPTIONS": [
-      "Increase #yMax #yHeat by 5"
+      "Increase #yEX #yGauge  by 5"
     ]
   },
 
@@ -43,7 +43,7 @@
     "NAME": "Vermillion Bird Spirit",
     "FLAVOR": "Rise like a phoenix",
     "DESCRIPTIONS": [
-      "While you have less than half your #yHeat and HP, your #yHeat increases by 1 at the start of your turn."
+      "While you have less than half your #yEX #yGauge and HP, your #yEX #yGauge increases by 1 at the start of your turn."
     ]
   },
 
@@ -51,7 +51,7 @@
     "NAME": "Bodhisattva Spirit",
     "FLAVOR": "Put off entering paradise in order to help others attain enlightenment",
     "DESCRIPTIONS": [
-      "At the start of your turn, lose all Heat, and gain 2 blocks and heal 1 HP for each heat lost this way."
+      "At the start of your turn, lose all #yEX #yCharges, and gain 2 blocks and heal 1 HP for each #yEX #yCharge lost this way."
     ]
   },
 
@@ -59,16 +59,16 @@
     "NAME": "Azure Dragon Spirit",
     "FLAVOR": "Go beyond your limit",
     "DESCRIPTIONS": [
-      "Spending Heat will heal you 1 HP."
+      "Spending #yEX #yCharge will heal you 1 HP."
     ]
   },
 
   "${modID}:Kiwami": {
     "NAME": "Kiwami",
-    "FLAVOR": "Extreme Heat go brrr",
+    "FLAVOR": "EX Boost go brrr",
     "DESCRIPTIONS": [
-      "Right Click to enter Extreme Heat Mode.",
-      "Right Click to exit Extreme Heat Mode.",
+      "Right Click to enter EX Boost.",
+      "Right Click to exit EX Boost.",
       " NL You have activated this relic, and can't do so again this turn.",
       " NL You have not activate this relic this turn."
     ]
@@ -78,7 +78,31 @@
     "NAME": "Enma Spirit",
     "FLAVOR": "Judge of Hell",
     "DESCRIPTIONS": [
-      "Your Heat is no longer reduce to 0 at the end of combat."
+      "Your #yEX #yGauge carries over at the end of combat."
+    ]
+  },
+
+  "${modID}:WhiteSnakeWisdom": {
+    "NAME": "White Snake Wisdom",
+    "FLAVOR": "\"Very well... A deal's a deal\"",
+    "DESCRIPTIONS": [
+      "When you play a reaction card, draw 2 cards instead of one"
+    ]
+  },
+
+  "${modID}:SwallowSpirit": {
+    "NAME": "Swallow Spirit",
+    "FLAVOR": "Placeholding",
+    "DESCRIPTIONS": [
+      "Ending your turn without any block give you 3 #yEX #yCharge."
+    ]
+  },
+
+  "${modID}:HannyaSpirit": {
+    "NAME": "Hannya Spirit",
+    "FLAVOR": "Placeholding",
+    "DESCRIPTIONS": [
+      "At the start of combat, gain 3 Strength until you lose HP."
     ]
   }
 }

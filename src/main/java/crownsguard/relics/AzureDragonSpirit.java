@@ -1,9 +1,8 @@
 package crownsguard.relics;
 
-import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import crownsguard.character.PlaywrightCharacter;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
 import static crownsguard.CrownsguardMod.makeID;
@@ -19,9 +18,19 @@ public class AzureDragonSpirit extends BaseRelic{
     }
 
     @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if (player instanceof PlaywrightCharacter && player.currentBlock > 0 && ((PlaywrightCharacter) player).heat < 10 && info.type == DamageInfo.DamageType.NORMAL)
-            ((PlaywrightCharacter) player).increaseHeat(1);
-        return super.onAttacked(info, damageAmount);
+    public void onEquip() {
+        if (player instanceof PlaywrightCharacter) ((PlaywrightCharacter) player).maxEXCharge += 5;
+        super.onEquip();
+    }
+
+    @Override
+    public void onUnequip() {
+        if (player instanceof PlaywrightCharacter) ((PlaywrightCharacter) player).maxEXCharge -= 5;
+        super.onEquip();
+    }
+
+    @Override
+    public String getUpdatedDescription() {
+        return this.DESCRIPTIONS[0];
     }
 }

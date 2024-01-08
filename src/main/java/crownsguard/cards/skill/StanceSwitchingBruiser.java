@@ -5,11 +5,9 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.BaseCard;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.stances.BruiserStance;
 import crownsguard.util.CardStats;
-
-import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
 
 public class StanceSwitchingBruiser extends BaseCard {
     public static final String ID = makeID(StanceSwitchingBruiser.class.getSimpleName());
@@ -28,7 +26,7 @@ public class StanceSwitchingBruiser extends BaseCard {
     }
 
     public StanceSwitchingBruiser() {
-        super(ID, info,true);
+        super(ID, info, true);
         setSelfRetain(true);
         setExhaust(true);
         this.costUpgrade = 1;

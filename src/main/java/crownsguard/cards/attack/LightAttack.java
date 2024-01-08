@@ -3,13 +3,11 @@ package crownsguard.cards.attack;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.BaseCard;
-import crownsguard.character.TheCrownsguard;
-import crownsguard.damage.BludgeoningDamage;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.LightDamage;
 import crownsguard.util.CardStats;
 
@@ -29,7 +27,7 @@ public class LightAttack extends BaseCard {
     //These will be used in the constructor. Technically you can just use the values directly,
     //but constants at the top of the file are easy to adjust.
     private static final int DAMAGE = 6;
-    private static final int UPG_DAMAGE = 2;
+    private static final int UPG_DAMAGE = 3;
 
     public LightAttack() {
         super(ID, info); //Pass the required information to the BaseCard constructor.

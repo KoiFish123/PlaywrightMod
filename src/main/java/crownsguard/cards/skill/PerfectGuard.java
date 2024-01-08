@@ -3,11 +3,8 @@ package crownsguard.cards.skill;
 import basemod.helpers.CardModifierManager;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
-import com.megacrit.cardcrawl.actions.common.GainBlockAction;
-import com.megacrit.cardcrawl.cards.CardQueueItem;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.WeakPower;
@@ -15,7 +12,7 @@ import crownsguard.cards.cardMod.ReactionCardMod;
 import crownsguard.cards.BaseCard;
 import crownsguard.cards.reactionInterface.ReactionToDamageCard;
 import crownsguard.stances.TankStance;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.util.CardStats;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
@@ -24,7 +21,7 @@ public class PerfectGuard extends BaseCard implements ReactionToDamageCard {
 
     public static final String ID = makeID(PerfectGuard.class.getSimpleName());
 
-    private static final int DEX_SCALE = 1;
+    private static final int DEX_SCALE = 5;
     private static final int UPG_DEX_SCALE = 5;
 
     private static final CardStats info = new CardStats(

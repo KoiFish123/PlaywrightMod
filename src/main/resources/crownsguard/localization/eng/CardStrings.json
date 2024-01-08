@@ -17,8 +17,8 @@
 
   "${modID}:HeavyAttack": {
     "NAME": "Heavy Attack",
-    "DESCRIPTION": "Deal !D! damage. Gain 2 ${modID}:heat.",
-    "UPGRADE_DESCRIPTION": "Deal !D! ${modID}:heavy damage. NL Gain 2 ${modID}:heat."
+    "DESCRIPTION": "Deal !D! damage. Gain 2 ${modID}:EX_Charge.",
+    "UPGRADE_DESCRIPTION": "Deal !D! ${modID}:heavy damage. NL Gain 2 ${modID}:EX_Charge."
   },
 
   "${modID}:Charge": {
@@ -65,7 +65,7 @@
 
   "${modID}:TigerStoppingFist": {
     "NAME": "Tiger Stopping Fist",
-    "DESCRIPTION": "${modID}:Reaction NL Negate the next attack damage you receive and deal !D! ${modID}:heavy damage back to the attacker. NL Does more damage NL with less ${modID}:Heat."
+    "DESCRIPTION": "${modID}:Reaction NL Negate the next attack damage you receive and deal !D! ${modID}:heavy damage back to the attacker. NL Does more damage NL with lower EX Gauge."
   },
 
   "${modID}:Finisher": {
@@ -82,21 +82,21 @@
 
   "${modID}:TripleFinisher": {
     "NAME": "Triple Finisher",
-    "DESCRIPTION": "Deal !D! ${modID}:heavy damage. NL Gain !M! Heat. NL Exhaust"
+    "DESCRIPTION": "Deal !D! ${modID}:heavy damage. NL Gain !M! ${modID}:EX_Charge. NL Exhaust"
   },
 
   "${modID}:EXRoadsideBrutality": {
     "NAME": "EX Roadside Brutality",
-    "DESCRIPTION": "Retain Exhaust NL Spend !M! heat to deal !D! ${modID}:heavy damage. NL Put a copy of this card in your hand. NL ${modID}:Heat_Action",
+    "DESCRIPTION": "Retain Exhaust NL Cost !M! ${modID}:EX_Charge NL Deal !D! ${modID}:heavy damage. NL This card deal 2 less damage this combat. NL ${modID}:EX_Action",
     "EXTENDED_DESCRIPTION": [
       "I can't do that! I don't have it in me!",
-      "I don't have enough heat"
+      "I don't have enough in my EX Gauge"
     ]
   },
 
   "${modID}:Taunt": {
     "NAME": "Taunt",
-    "DESCRIPTION": "Gain !M! ${modID}:Heat. Apply 1 Strength and 1 Vulnerable to an enemy"
+    "DESCRIPTION": "Gain !M! ${modID}:EX_Charge. Apply 1 Strength and 1 Vulnerable to an enemy"
   },
 
   "${modID}:Repel": {
@@ -106,7 +106,7 @@
 
   "${modID}:EXUnyieldingCounter": {
     "NAME": "EX Unyielding Counter",
-    "DESCRIPTION": "${modID}:Reaction NL The next time you receive damage, spend 5 ${modID}:Heat to apply !M! Weak and deal !D! ${modID}:heavy damage back to the attacker."
+    "DESCRIPTION": "${modID}:Reaction NL The next time you receive damage, spend 5 ${modID}:EX_Charge to apply !M! Weak and deal !D! ${modID}:heavy damage back to the attacker."
   },
 
   "${modID}:Reguard": {
@@ -121,7 +121,7 @@
 
   "${modID}:BoostAttack": {
     "NAME": "Boost Attack",
-    "DESCRIPTION": "Gain !M! Strength.",
+    "DESCRIPTION": "Gain !M! Strength. NL You can upgrade this card 3 more times.",
     "EXTENDED_DESCRIPTION": [
       " NL You can upgrade this card 3 more times.",
       " NL You can upgrade this card 2 more times.",
@@ -131,7 +131,7 @@
 
   "${modID}:BoostDefense": {
     "NAME": "Boost Defense",
-    "DESCRIPTION": "Gain !M! Dexterity.",
+    "DESCRIPTION": "Gain !M! Dexterity. NL You can upgrade this card 3 more times.",
     "EXTENDED_DESCRIPTION": [
       " NL You can upgrade this card 3 more times.",
       " NL You can upgrade this card 2 more times.",
@@ -141,8 +141,8 @@
 
   "${modID}:BreakfallAdept": {
     "NAME": "Breakfall Adept",
-    "DESCRIPTION": "Reaction NL When you receive Vulnerable, reduce it by half instead.",
-    "UPGRADE_DESCRIPTION": "Reaction NL When you receive Vulnerable, reduce it to none instead."
+    "DESCRIPTION": "${modID}:Reaction NL When you receive Vulnerable, reduce it by half instead.",
+    "UPGRADE_DESCRIPTION": "${modID}:Reaction NL When you receive Vulnerable, reduce it to none instead."
   },
 
   "${modID}:WineAndDine": {
@@ -158,11 +158,11 @@
 
   "${modID}:EXDrunkenThrust": {
     "NAME": "EX Drunken Thrust",
-    "DESCRIPTION": "Spend !M! heat to deal !D! ${modID}:heavy damage. NL Deal more damage equal to double your drunk level. Attack always hit. Lose all Drunk NL ${modID}:Heat_Action",
-    "UPGRADE_DESCRIPTION": "Spend !M! heat to deal !D! ${modID}:heavy damage. NL Deal more damage equal to triple your drunk level. Attack always hit. Lose all Drunk NL ${modID}:Heat_Action",
+    "DESCRIPTION": "Cost !M! ${modID}:EX_Charge NL Deal !D! ${modID}:heavy damage. NL Deal more damage equal to double your drunk level. Attack always hit. Lose all Drunk NL ${modID}:EX_Action",
+    "UPGRADE_DESCRIPTION": "Cost !M! ${modID}:EX_Charge NL Deal !D! ${modID}:heavy damage. NL Deal more damage equal to triple your drunk level. Attack always hit. Lose all Drunk NL ${modID}:EX_Action",
     "EXTENDED_DESCRIPTION": [
       "I can't do that! I don't have it in me!",
-      "I don't have enough heat"
+      "I don't have enough in my EX Gauge"
     ]
   },
 
@@ -180,5 +180,31 @@
     "NAME": "Quickstep",
     "DESCRIPTION": "${modID}:Reaction NL ${modID}:Evade damage that is !B! or lower.",
     "UPGRADE_DESCRIPTION": "${modID}:Reaction NL ${modID}:Evade damage that is !B! or lower. NL Draw an attack card from the draw pile."
+  },
+
+  "${modID}:HeadbuttBarrage": {
+    "NAME": "Headbutt Barrage",
+    "DESCRIPTION": "Deal !D! damage X time to random enemies, and shuffle X Dazed into your discard pile.",
+    "UPGRADE_DESCRIPTION": "Deal !D! damage X+1 time to random enemies, and shuffle X+1 Dazed into your discard pile.",
+    "EXTENDED_DESCRIPTION": [
+      "Ow ow ow..."
+    ]
+  },
+
+  "${modID}:EXGuarding": {
+    "NAME": "EX Guarding",
+    "DESCRIPTION": "Gain Block equal to your current ${modID}:EX_Charge.",
+    "UPGRADE_DESCRIPTION": "Gain Block equal to your current ${modID}:EX_Charge. Whenever you change stances, return this from the discard pile into your hand"
+  },
+
+  "${modID}:EXRelentlessBlow": {
+    "NAME": "EX Relentless Blow",
+    "DESCRIPTION": "Deal !D! ${modID}:light damage X times. Number of times increase by 1 for every 5 ${modID}:EX_Charge you have. Lose all ${modID}:EX_Charge. Exhaust",
+    "UPGRADE_DESCRIPTION": "Deal !D! ${modID}:light damage X times. Number of times increase by 1 for every 3 ${modID}:EX_Charge you have. Lose all ${modID}:EX_Charge. Exhaust"
+  },
+
+  "${modID}:DetectivesFocus": {
+    "NAME": "Detective's Focus",
+    "DESCRIPTION": "Gain !B! block. NL At the end of your turn, return this from the discard pile into your hand if you have less than 50% HP."
   }
 }

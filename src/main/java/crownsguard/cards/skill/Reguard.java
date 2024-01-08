@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.cardMod.ReactionCardMod;
 import crownsguard.cards.BaseCard;
 import crownsguard.cards.reactionInterface.ReactionToDamageCard;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.util.CardStats;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
@@ -19,8 +19,8 @@ import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
 public class Reguard extends BaseCard implements ReactionToDamageCard {
     public static final String ID = makeID(Reguard.class.getSimpleName());
 
-    private static final int BLOCK = 5;
-    private static final int UPG_BLOCK = 3;
+    private static final int BLOCK = 10;
+    private static final int UPG_BLOCK = 5;
 
     private static final CardStats info = new CardStats(
             TheCrownsguard.Enums.COLOR_ORANGE,

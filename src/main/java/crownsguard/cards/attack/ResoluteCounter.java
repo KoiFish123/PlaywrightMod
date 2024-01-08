@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.cardMod.ReactionCardMod;
 import crownsguard.cards.BaseCard;
 import crownsguard.cards.reactionInterface.ReactionToDamageCard;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.CounterDamage;
 import crownsguard.util.CardStats;
 
@@ -18,7 +18,7 @@ import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
 
 public class ResoluteCounter extends BaseCard implements ReactionToDamageCard {
     private static final int DAMAGE = 6;
-    private static final int UPG_DAMAGE = 2;
+    private static final int UPG_DAMAGE = 4;
 
     public static final String ID = makeID(ResoluteCounter.class.getSimpleName());
 

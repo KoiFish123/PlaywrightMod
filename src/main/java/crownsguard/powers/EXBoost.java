@@ -11,18 +11,18 @@ import crownsguard.character.PlaywrightCharacter;
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
 import static crownsguard.CrownsguardMod.makeID;
 
-public class ExtremeHeatMode extends BasePower{
-    public static final String POWER_ID = makeID(ExtremeHeatMode.class.getSimpleName());
+public class EXBoost extends BasePower{
+    public static final String POWER_ID = makeID(EXBoost.class.getSimpleName());
 
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
 
     private static final boolean TURN_BASED = false;
 
-    private int heatOnActivation;
+    private int exChargeOnActivation;
 
     private int bonus;
 
-    private int heatLossOverTurn;
+    private int exChargeLossOverTurn;
 
 
     @Override
@@ -41,7 +41,7 @@ public class ExtremeHeatMode extends BasePower{
     @Override
     public void atStartOfTurn() {
         if (player instanceof PlaywrightCharacter) {
-            if (((PlaywrightCharacter) player).heat > 0) {
+            if (((PlaywrightCharacter) player).exCharge > 0) {
                 addToBot(new GainEnergyAction(1));
                 addToBot(new DrawCardAction(1));
             } else
@@ -53,7 +53,7 @@ public class ExtremeHeatMode extends BasePower{
     public void atEndOfTurn(boolean isPlayer) {
         if (isPlayer){
             if (player instanceof PlaywrightCharacter) {
-                ((PlaywrightCharacter)player).decreaseHeat(heatLossOverTurn);
+                ((PlaywrightCharacter)player).decreaseEXCharge(exChargeLossOverTurn);
             }
         }
         super.atEndOfTurn(isPlayer);
@@ -61,7 +61,7 @@ public class ExtremeHeatMode extends BasePower{
 
     @Override
     public void onAfterCardPlayed(AbstractCard usedCard) {
-        if (((PlaywrightCharacter) player).heat == 0){
+        if (((PlaywrightCharacter) player).exCharge == 0){
             addToBot(new RemoveSpecificPowerAction(player, player,this));
         }
     }
@@ -69,23 +69,23 @@ public class ExtremeHeatMode extends BasePower{
 
     @Override
     public void onRemove() {
-        ((PlaywrightCharacter)player).updateHeatAfterExitExtremeHeat(heatOnActivation);
+        ((PlaywrightCharacter)player).updateEXGaugeAfterExitEXBoost(exChargeOnActivation);
         super.onRemove();
     }
 
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.bonus + DESCRIPTIONS[1] + this.bonus + DESCRIPTIONS[2] + heatLossOverTurn + DESCRIPTIONS[3];
+        this.description = DESCRIPTIONS[0] + this.bonus + DESCRIPTIONS[1] + this.bonus + DESCRIPTIONS[2] + exChargeLossOverTurn + DESCRIPTIONS[3];
     }
 
-    public ExtremeHeatMode(AbstractCreature owner, int heatLossOverTurn) {
+    public EXBoost(AbstractCreature owner, int exChargeLossOverTurn) {
         super(POWER_ID, TYPE, TURN_BASED, owner, -1);
 
-        if (owner instanceof PlaywrightCharacter) heatOnActivation = ((PlaywrightCharacter) owner).heat;
+        if (owner instanceof PlaywrightCharacter) exChargeOnActivation = ((PlaywrightCharacter) owner).exCharge;
 
-        this.bonus = heatOnActivation/5;
+        this.bonus = exChargeOnActivation/3;
 
-        this.heatLossOverTurn = heatLossOverTurn;
+        this.exChargeLossOverTurn = exChargeLossOverTurn;
 
         updateDescription();
     }

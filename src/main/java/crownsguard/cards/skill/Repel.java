@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.powers.EnergizedPower;
 import crownsguard.cards.cardMod.ReactionCardMod;
 import crownsguard.cards.BaseCard;
 import crownsguard.cards.reactionInterface.ReactionToDamageCard;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.stances.BruiserStance;
 import crownsguard.util.CardStats;
 
@@ -44,12 +44,14 @@ public class Repel extends BaseCard implements ReactionToDamageCard {
 
     @Override
     public int onPlayerDamaged(int amount, DamageInfo info) {
-        calculateCardDamage((AbstractMonster)info.owner);
-        if (amount <= damage){
-            addToTop(new DiscardSpecificCardAction(this));
-            if (player.stance.ID.equals(BruiserStance.STANCE_ID))
-                addToTop(new ApplyPowerAction(info.owner, player,new EnergizedPower(player,1)));
-            return 0;
+        if (amount > player.currentBlock) {
+            calculateCardDamage((AbstractMonster)info.owner);
+            if (amount-player.currentBlock <= this.damage){
+                addToTop(new DiscardSpecificCardAction(this));
+                if (player.stance.ID.equals(BruiserStance.STANCE_ID))
+                    addToTop(new ApplyPowerAction(info.owner, player,new EnergizedPower(player,1)));
+                return 0;
+            }
         }
         return amount;
     }

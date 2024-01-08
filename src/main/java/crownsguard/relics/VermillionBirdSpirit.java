@@ -1,9 +1,7 @@
 package crownsguard.relics;
 
-import com.megacrit.cardcrawl.cards.DamageInfo;
-import com.megacrit.cardcrawl.relics.AbstractRelic;
 import crownsguard.character.PlaywrightCharacter;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
 import static crownsguard.CrownsguardMod.makeID;
@@ -18,9 +16,35 @@ public class VermillionBirdSpirit extends BaseRelic{
         super(ID, NAME, TheCrownsguard.Enums.COLOR_ORANGE, RARITY, SOUND);
     }
 
+    private boolean isActive = false;
+
     @Override
     public void atTurnStart() {
-        if (player instanceof PlaywrightCharacter && ((PlaywrightCharacter) player).heat < 10 && player.isBloodied)
-            ((PlaywrightCharacter) player).increaseHeat(1);
+        if (player instanceof PlaywrightCharacter && ((PlaywrightCharacter) player).exCharge < 10 && player.isBloodied){
+            this.flash();
+            ((PlaywrightCharacter) player).increaseEXCharge(1);
+        }
+    }
+
+    @Override
+    public void onBloodied() {
+        this.flash();
+        this.beginLongPulse();
+        super.onBloodied();
+    }
+
+    @Override
+    public void onNotBloodied() {
+        this.stopPulse();;
+        super.onNotBloodied();
+    }
+
+    public void onVictory() {
+        this.stopPulse();;
+    }
+
+    @Override
+    public String getUpdatedDescription() {
+        return this.DESCRIPTIONS[0];
     }
 }

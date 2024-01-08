@@ -1,14 +1,13 @@
 package crownsguard.cards.skill;
 
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.powers.VulnerablePower;
 import crownsguard.cards.BaseCard;
 import crownsguard.character.PlaywrightCharacter;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.util.CardStats;
 
 public class Taunt extends BaseCard {
@@ -21,13 +20,13 @@ public class Taunt extends BaseCard {
             0 //The card's base cost. -1 is X cost, -2 is no cost for unplayable cards like curses, or Reflex.
     );
 
-    // Todo: Reduce HEAT_GAIN back after test
-    public int HEAT_GAIN = 10;
-    public int UPG_HEAT_GAIN = 1;
+    // Todo: Reduce EX_CHARGE_GAIN back after test
+    public int EX_CHARGE_GAIN = 10;
+    public int UPG_EX_CHARGE_GAIN = 1;
 
     public Taunt() {
         super(ID, info,true); //Pass the required information to the BaseCard constructor.
-        this.baseMagicNumber = HEAT_GAIN;
+        this.baseMagicNumber = EX_CHARGE_GAIN;
         this.magicNumber = baseMagicNumber;
     }
 
@@ -35,14 +34,14 @@ public class Taunt extends BaseCard {
     public void upgrade() {
         if (!this.upgraded) {
             upgradeName();
-            upgradeMagicNumber(UPG_HEAT_GAIN);
+            upgradeMagicNumber(UPG_EX_CHARGE_GAIN);
             initializeDescription();
         }
     }
 
     @Override
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
-        if (abstractPlayer instanceof PlaywrightCharacter) ((PlaywrightCharacter) abstractPlayer).increaseHeat(this.magicNumber);
+        if (abstractPlayer instanceof PlaywrightCharacter) ((PlaywrightCharacter) abstractPlayer).increaseEXCharge(this.magicNumber);
         addToBot(new ApplyPowerAction(abstractMonster,abstractPlayer,new StrengthPower(abstractMonster,1)));
         addToBot(new ApplyPowerAction(abstractMonster,abstractPlayer,new VulnerablePower(abstractMonster,1,false)));
     }

@@ -36,7 +36,7 @@
       "Charged",
       "charged"
     ],
-    "DESCRIPTION": "Your next attack deal 50% additional damage and deal #Heavy damage. NL Playing any other card will remove this. NL Does not stack"
+    "DESCRIPTION": "Your next attack deal 50% additional damage and deal #yHeavy damage. NL Playing any other card will remove this. NL Does not stack"
   },
   {
     "PROPER_NAME": "Heavy",
@@ -97,7 +97,7 @@
       "Tank",
       "tank"
     ],
-    "DESCRIPTION": "While in this stance, gain 1 Dexterity + 1 for every 5 Heat you have."
+    "DESCRIPTION": "While in this stance, gain 1 Dexterity + 1 for every 5 EX Charge you have."
   },
   {
     "PROPER_NAME": "Bruiser",
@@ -105,43 +105,32 @@
       "Bruiser",
       "bruiser"
     ],
-    "DESCRIPTION": "While in this stance, gain 1 Strength + 1 for every 5 Heat you have."
+    "DESCRIPTION": "While in this stance, gain 1 Strength + 1 for every 5 EX Charge you have."
   },
   {
-    "PROPER_NAME": "Heat",
+    "PROPER_NAME": "EX Charge",
     "NAMES": [
-      "Heat",
-      "heat"
+      "EX Charge",
+      "EX_Charge"
     ],
-    "DESCRIPTION": "You gain heat for each attack card you play, and lose heat for each unblocked damage you receive. NL Some cards required heat to play."
+    "DESCRIPTION": "You gain EX Charge each time you attack, and lose EX Charge each time you take damage. NL Some cards required EX Charge to play."
+  },
+
+  {
+    "PROPER_NAME": "EX Action",
+    "NAMES": [
+      "EX Action",
+      "EX_Action"
+    ],
+    "DESCRIPTION": "These are cards that will cost EX Charge to play but will not give you EX Charge."
   },
   {
-    "PROPER_NAME": "Max Heat",
+    "PROPER_NAME": "EX Boost",
     "NAMES": [
-      "max heat",
-      "Max Heat",
-      "max_heat",
-      "Max_Heat"
+      "EX Boost",
+      "EX_Boost"
     ],
-    "DESCRIPTION": "The maximum amount of heat you can have"
-  },
-  {
-    "PROPER_NAME": "Heat Action",
-    "NAMES": [
-      "heat action",
-      "Heat Action",
-      "heat_action",
-      "Heat_Action"
-    ],
-    "DESCRIPTION": "These are cards that will cost heat to play but will not give you heat."
-  },
-  {
-    "PROPER_NAME": "Extreme Heat Mode",
-    "NAMES": [
-      "Extreme Heat Mode",
-      "Extreme_Heat_Mode"
-    ],
-    "DESCRIPTION": "Deal more damage, gain more block, draw more card and gain extra [E] per turn! Lose heat over turn."
+    "DESCRIPTION": "Deal more damage, gain more block, draw more card and gain extra [E] per turn! Drain the EX Gauge over turn."
   },
   {
     "PROPER_NAME": "Drunk",
@@ -149,7 +138,7 @@
       "Drunk",
       "drunk"
     ],
-    "DESCRIPTION": "For each stack, attacks give one more heat but has 10% chance of dealing 0 damage. NL At max drunk, gained on Sh!tfaced"
+    "DESCRIPTION": "For each stack, attacks give one more EX Charge but has 10% chance of dealing 0 damage. NL At max drunk, getting more drunk will give you one Smashed"
   },
   {
     "PROPER_NAME": "Parry",

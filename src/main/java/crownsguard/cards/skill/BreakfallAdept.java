@@ -11,7 +11,7 @@ import com.megacrit.cardcrawl.powers.VulnerablePower;
 import crownsguard.cards.cardMod.ReactionCardMod;
 import crownsguard.cards.BaseCard;
 import crownsguard.cards.reactionInterface.ReactionToPowerCard;
-import crownsguard.character.TheCrownsguard;
+import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.util.CardStats;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
@@ -43,10 +43,8 @@ public class BreakfallAdept extends BaseCard implements ReactionToPowerCard {
         return new BreakfallAdept();
     }
 
-
     @Override
     public void onPowerAppliedToPlayer(AbstractPower abstractPower, AbstractCreature p, AbstractCreature m) {
-        // Empty Implementation
         if (abstractPower.ID.equals(VulnerablePower.POWER_ID)){
             addToTop(new DiscardSpecificCardAction(this));
             if (!upgraded)
@@ -54,10 +52,5 @@ public class BreakfallAdept extends BaseCard implements ReactionToPowerCard {
             else if (upgraded)
                 addToTop(new ReducePowerAction(player,player,VulnerablePower.POWER_ID,abstractPower.amount));
         }
-    }
-
-    @Override
-    public void onPowerAppliedToMonster(AbstractPower abstractPower, AbstractCreature m, AbstractCreature p) {
-        // Empty Implementation
     }
 }
