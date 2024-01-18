@@ -3,16 +3,14 @@ package crownsguard.powers;
 
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAllEnemiesAction;
-import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
-import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import crownsguard.character.PlaywrightCharacter;
 import crownsguard.stances.TankStance;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class CollateralDamagePower extends BasePower {
     public static final String POWER_ID = makeID(CollateralDamagePower.class.getSimpleName());

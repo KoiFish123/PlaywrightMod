@@ -5,7 +5,7 @@ import crownsguard.character.PlaywrightCharacter;
 import crownsguard.character.crownsguard.TheCrownsguard;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class BlackTortoiseSpirit extends BaseRelic{
     private static final String NAME = "BlackTortoiseSpirit"; //The name will be used for determining the image file as well as the ID.

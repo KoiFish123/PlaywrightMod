@@ -3,7 +3,7 @@ package crownsguard.cards;
 import basemod.BaseMod;
 import basemod.abstracts.CustomCard;
 import basemod.abstracts.DynamicVariable;
-import crownsguard.CrownsguardMod;
+import crownsguard.PlaywrightMod;
 import crownsguard.util.CardStats;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.cards.AbstractCard;
@@ -25,7 +25,7 @@ import static crownsguard.util.TextureLoader.getCardTextureString;
 public abstract class BaseCard extends CustomCard {
     final private static Map<String, DynamicVariable> customVars = new HashMap<>();
 
-    protected static String makeID(String name) { return CrownsguardMod.makeID(name); }
+    protected static String makeID(String name) { return PlaywrightMod.makeID(name); }
     protected CardStrings cardStrings;
 
     protected boolean upgradesDescription;
@@ -453,7 +453,7 @@ public abstract class BaseCard extends CustomCard {
             {
                 if (cardStrings.UPGRADE_DESCRIPTION == null)
                 {
-                    CrownsguardMod.logger.error("Card " + cardID + " upgrades description and has null upgrade description.");
+                    PlaywrightMod.logger.error("Card " + cardID + " upgrades description and has null upgrade description.");
                 }
                 else
                 {

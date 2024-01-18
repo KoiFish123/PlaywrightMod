@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class TankStance extends AbstractStance{
     public static final String STANCE_ID = makeID(TankStance.class.getSimpleName());

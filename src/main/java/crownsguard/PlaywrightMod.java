@@ -1,5 +1,7 @@
 package crownsguard;
 
+import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import basemod.AutoAdd;
@@ -18,6 +20,7 @@ import crownsguard.cards.reactionInterface.ReactionToExhaustCard;
 import crownsguard.cards.reactionInterface.ReactionToPowerCard;
 import crownsguard.cards.skill.EmptySkill;
 import crownsguard.character.crownsguard.TheCrownsguard;
+import crownsguard.damage.mainDamage.QuickDamage;
 import crownsguard.potions.BasePotion;
 import crownsguard.relics.BaseRelic;
 import crownsguard.util.GeneralUtils;
@@ -43,7 +46,7 @@ import java.util.*;
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
 
 @SpireInitializer
-public class CrownsguardMod implements
+public class PlaywrightMod implements
         EditRelicsSubscriber,
         EditCardsSubscriber,
         EditCharactersSubscriber,
@@ -86,7 +89,7 @@ PostPowerApplySubscriber,
     //This will be called by ModTheSpire because of the @SpireInitializer annotation at the top of the class.
     public static void initialize() {
         logger.info("========================= Initializing Mod. =========================");
-        new CrownsguardMod();
+        new PlaywrightMod();
 
         BaseMod.addColor(TheCrownsguard.Enums.COLOR_ORANGE, cardColor, BG_ATTACK, BG_SKILL, BG_POWER, ENERGY_ORB,
                 BG_ATTACK_P, BG_SKILL_P, BG_POWER_P, ENERGY_ORB_P,
@@ -94,7 +97,7 @@ PostPowerApplySubscriber,
         logger.info("========================= /Mod Initialized/ =========================");
     }
 
-    public CrownsguardMod() {
+    public PlaywrightMod() {
         BaseMod.subscribe(this); //This will make BaseMod trigger all the subscribers at their appropriate times.
         logger.info(modID + " subscribed to BaseMod.");
     }
@@ -227,7 +230,7 @@ PostPowerApplySubscriber,
             if (annotationDB == null)
                 return false;
             Set<String> initializers = annotationDB.getAnnotationIndex().getOrDefault(SpireInitializer.class.getName(), Collections.emptySet());
-            return initializers.contains(CrownsguardMod.class.getName());
+            return initializers.contains(PlaywrightMod.class.getName());
         }).findFirst();
         if (infos.isPresent()) {
             info = infos.get();
@@ -297,6 +300,11 @@ PostPowerApplySubscriber,
     @Override
     public int receiveOnPlayerDamaged(int amount, DamageInfo damageInfo) {
         if (damageInfo.owner instanceof AbstractMonster && damageInfo.type == DamageInfo.DamageType.NORMAL) {
+            for (AbstractDamageModifier mod : DamageModifierManager.getDamageMods(damageInfo)) {
+                if (mod instanceof QuickDamage) {
+                    return amount;
+                }
+            }
             for (AbstractCard card : player.hand.group) {
                 if (card instanceof ReactionToDamageCard) {
                     amount = ((ReactionToDamageCard) card).onPlayerDamaged(amount, damageInfo);

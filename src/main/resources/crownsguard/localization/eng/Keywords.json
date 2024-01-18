@@ -165,5 +165,15 @@
       "resist"
     ],
     "DESCRIPTION": "Damage reduction that scales with Strength AND Dexterity."
+  },
+
+  {
+    "PROPER_NAME": "Fragile",
+    "NAMES": [
+      "Fragile",
+      "fragile"
+    ],
+    "DESCRIPTION": "This card exhaust itself when you take damage if it is in your hand."
   }
+
 ]

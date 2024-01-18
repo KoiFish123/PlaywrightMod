@@ -6,8 +6,8 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.NoBlockPower;
 import crownsguard.cards.BaseCard;
 import crownsguard.character.crownsguard.TheCrownsguard;
-import crownsguard.powers.DamageResistance;
-import crownsguard.powers.TempDamageResistance;
+import crownsguard.powers.DamageResistancePower;
+import crownsguard.powers.TempDamageResistancePower;
 import crownsguard.util.CardStats;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
@@ -37,14 +37,14 @@ public class ResistGuard extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
 
 
-        addToBot(new ApplyPowerAction(p,p,new TempDamageResistance(p,1)));
+        addToBot(new ApplyPowerAction(p,p,new TempDamageResistancePower(p,1)));
         addToBot(new RemoveAllBlockAction(p,p));
         addToBot(new ApplyPowerAction(p,p,new NoBlockPower(p,1,true)));
     }
 
     @Override
     public void triggerAtStartOfTurn() {
-        addToBot(new RemoveSpecificPowerAction(player,player,DamageResistance.POWER_ID));
+        addToBot(new RemoveSpecificPowerAction(player,player, DamageResistancePower.POWER_ID));
     }
 
     public ResistGuard() {

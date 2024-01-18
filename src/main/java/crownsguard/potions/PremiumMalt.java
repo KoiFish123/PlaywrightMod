@@ -1,7 +1,7 @@
 package crownsguard.potions;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
 import com.megacrit.cardcrawl.actions.common.HealAction;

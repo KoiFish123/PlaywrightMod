@@ -1,7 +1,10 @@
 package crownsguard.cards.skill;
 
 import basemod.helpers.CardModifierManager;
+import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
+import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.ApplyPowerAction;
+import com.megacrit.cardcrawl.actions.common.DamageAction;
 import com.megacrit.cardcrawl.actions.common.DiscardSpecificCardAction;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.characters.AbstractPlayer;
@@ -11,6 +14,7 @@ import crownsguard.cards.cardMod.ReactionCardMod;
 import crownsguard.cards.BaseCard;
 import crownsguard.cards.reactionInterface.ReactionToDamageCard;
 import crownsguard.character.crownsguard.TheCrownsguard;
+import crownsguard.damage.mainDamage.LightDamage;
 import crownsguard.stances.BruiserStance;
 import crownsguard.util.CardStats;
 
@@ -35,6 +39,7 @@ public class Repel extends BaseCard implements ReactionToDamageCard {
         setSelfRetain(true);
         this.baseMagicNumber = REPEL_POWER;
         setDamage(REPEL_POWER, UPG_REPEL_POWER);
+        DamageModifierManager.addModifier(this, new LightDamage());
     }
 
     @Override
@@ -48,8 +53,10 @@ public class Repel extends BaseCard implements ReactionToDamageCard {
             calculateCardDamage((AbstractMonster)info.owner);
             if (amount-player.currentBlock <= this.damage){
                 addToTop(new DiscardSpecificCardAction(this));
-                if (player.stance.ID.equals(BruiserStance.STANCE_ID))
-                    addToTop(new ApplyPowerAction(info.owner, player,new EnergizedPower(player,1)));
+                if (player.stance.ID.equals(BruiserStance.STANCE_ID)){
+                    addToTop(new ApplyPowerAction(player,player,new EnergizedPower(player,1),1));
+                    addToTop(new DamageAction(info.owner, new DamageInfo(player, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_LIGHT));
+                }
                 return 0;
             }
         }

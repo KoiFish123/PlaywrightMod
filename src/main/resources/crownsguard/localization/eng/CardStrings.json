@@ -40,7 +40,7 @@
 
   "${modID}:PerfectGuard": {
     "NAME": "Perfect Guard",
-    "DESCRIPTION": "${modID}:Reaction NL ${modID}:Resist the next attack by !B!. NL While in ${modID}:Tank, apply 2 Weak if you reduce damage to 0"
+    "DESCRIPTION": "${modID}:Resist the next attack by !B!. NL While in ${modID}:Tank, apply 2 Weak if you reduce damage to 0"
   },
 
   "${modID}:StanceSwitchingTank": {
@@ -60,12 +60,12 @@
 
   "${modID}:ResoluteCounter": {
     "NAME": "Resolute Counter",
-    "DESCRIPTION": "${modID}:Reaction NL The next time you receive damage, deal !D! damage back to the attacker."
+    "DESCRIPTION": "The next time you receive damage, deal !D! ${modID}:light damage back to the attacker."
   },
 
   "${modID}:TigerStoppingFist": {
     "NAME": "Tiger Stopping Fist",
-    "DESCRIPTION": "${modID}:Reaction NL Negate the next attack damage you receive and deal !D! ${modID}:heavy damage back to the attacker. NL Does more damage NL with lower EX Gauge."
+    "DESCRIPTION": "Negate the next attack damage you receive and deal !D! damage back to the attacker. NL Does more damage NL with lower EX Gauge."
   },
 
   "${modID}:Finisher": {
@@ -101,17 +101,17 @@
 
   "${modID}:Repel": {
     "NAME": "Repel",
-    "DESCRIPTION": "${modID}:Reaction NL ${modID}:Parry damage that is !D! or lower. NL While in ${modID}:Bruiser, gain [E] next turn."
+    "DESCRIPTION": "${modID}:Parry damage that is !D! or lower. NL While in ${modID}:Bruiser, dead !D! ${modID}:light damage to attacker and gain [E] next turn."
   },
 
   "${modID}:EXUnyieldingCounter": {
     "NAME": "EX Unyielding Counter",
-    "DESCRIPTION": "${modID}:Reaction NL The next time you receive damage, spend 5 ${modID}:EX_Charge to apply !M! Weak and deal !D! ${modID}:heavy damage back to the attacker."
+    "DESCRIPTION": "The next time you receive damage, spend 5 ${modID}:EX_Charge to apply !M! Weak and deal !D! ${modID}:heavy damage back to the attacker."
   },
 
   "${modID}:Reguard": {
     "NAME": "Reguard",
-    "DESCRIPTION": "${modID}:Reaction NL The next time your block would be broken, gain !B! block."
+    "DESCRIPTION": "The next time your block would be broken, gain !B! block."
   },
 
   "${modID}:Smashed": {
@@ -141,8 +141,8 @@
 
   "${modID}:BreakfallAdept": {
     "NAME": "Breakfall Adept",
-    "DESCRIPTION": "${modID}:Reaction NL When you receive Vulnerable, reduce it by half instead.",
-    "UPGRADE_DESCRIPTION": "${modID}:Reaction NL When you receive Vulnerable, reduce it to none instead."
+    "DESCRIPTION": "When you receive Vulnerable, reduce it by half instead.",
+    "UPGRADE_DESCRIPTION": "When you receive Vulnerable, reduce it to none instead."
   },
 
   "${modID}:WineAndDine": {
@@ -178,8 +178,8 @@
 
   "${modID}:Quickstep": {
     "NAME": "Quickstep",
-    "DESCRIPTION": "${modID}:Reaction NL ${modID}:Evade damage that is !B! or lower.",
-    "UPGRADE_DESCRIPTION": "${modID}:Reaction NL ${modID}:Evade damage that is !B! or lower. NL Draw an attack card from the draw pile."
+    "DESCRIPTION": "${modID}:Evade damage that is !B! or lower.",
+    "UPGRADE_DESCRIPTION": "${modID}:Evade damage that is !B! or lower. NL Draw an attack card from the draw pile."
   },
 
   "${modID}:HeadbuttBarrage": {
@@ -206,5 +206,10 @@
   "${modID}:DetectivesFocus": {
     "NAME": "Detective's Focus",
     "DESCRIPTION": "Gain !B! block. NL At the end of your turn, return this from the discard pile into your hand if you have less than 50% HP."
+  },
+
+  "${modID}:GearingUp": {
+    "NAME": "Gearing Up",
+    "DESCRIPTION": "Whenever you gain [E], gain !M! block."
   }
 }

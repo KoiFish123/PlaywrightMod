@@ -8,14 +8,14 @@ import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
-import crownsguard.damage.HeavyDamage;
+import crownsguard.damage.mainDamage.HeavyDamage;
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
 
 
 import java.util.Collections;
 import java.util.List;
 
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class ChargedPower extends BasePower implements DamageModApplyingPower {
     public static final String POWER_ID = makeID(ChargedPower.class.getSimpleName());
@@ -25,14 +25,17 @@ public class ChargedPower extends BasePower implements DamageModApplyingPower {
     private static final boolean TURN_BASED = false;
     public ChargedPower(AbstractCreature owner) {
         super(POWER_ID, TYPE, TURN_BASED, owner, -1);
-        this.description = DESCRIPTIONS[0];
+        if (owner == player)
+            this.description = DESCRIPTIONS[0];
+        else
+            this.description = DESCRIPTIONS[1];
     }
 
 
     @Override
     public void onUseCard(AbstractCard card, UseCardAction action) {
         if (owner == player)
-            addToTop(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+            addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
     }
 
     public float atDamageGive(float damage, DamageInfo.DamageType type) {
@@ -40,6 +43,13 @@ public class ChargedPower extends BasePower implements DamageModApplyingPower {
             return damage * 1.5F;
         }
         return damage;
+    }
+
+    @Override
+    public void atEndOfTurn(boolean isPlayer) {
+        if (owner != player && !isPlayer)
+            addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, this));
+        super.atEndOfTurn(isPlayer);
     }
 
     @Override

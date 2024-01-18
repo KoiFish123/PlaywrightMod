@@ -21,7 +21,7 @@ import com.megacrit.cardcrawl.powers.DexterityPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.screens.CharSelectInfo;
 import com.megacrit.cardcrawl.ui.panels.energyorb.EnergyOrbInterface;
-import crownsguard.powers.EXBoost;
+import crownsguard.powers.EXBoostPower;
 import crownsguard.powers.HiddenEXMechanic;
 import crownsguard.relics.AzureDragonSpirit;
 import crownsguard.relics.EnmaSpirit;
@@ -205,7 +205,7 @@ public class PlaywrightCharacter extends CustomPlayer implements EXInterface {
         if (player.hasRelic(WhiteTigerSpirit.ID))
             num += 1;
 
-        if (player.hasPower(EXBoost.POWER_ID) && num > 0)
+        if (player.hasPower(EXBoostPower.POWER_ID) && num > 0)
             num = 0;
 
         exGaugeIncreasedThisTurn = true;
@@ -213,7 +213,7 @@ public class PlaywrightCharacter extends CustomPlayer implements EXInterface {
     }
 
     public void increaseEXChargeThroughAttack(int num) {
-        if (player.hasPower(EXBoost.POWER_ID) && num > 0) {
+        if (player.hasPower(EXBoostPower.POWER_ID) && num > 0) {
             num = 0;
         }
         exGaugeIncreasedThisTurn = true;
@@ -233,7 +233,7 @@ public class PlaywrightCharacter extends CustomPlayer implements EXInterface {
     }
 
     public void decreaseEXChargeWhenAttacked(int num) {
-        if (player.hasPower(EXBoost.POWER_ID) && num > 0) {
+        if (player.hasPower(EXBoostPower.POWER_ID) && num > 0) {
             num = 0;
         }
         updateEXGauge(-num);
@@ -246,7 +246,7 @@ public class PlaywrightCharacter extends CustomPlayer implements EXInterface {
 
     @Override
     public void applyEndOfTurnTriggers() {
-        if (!exGaugeIncreasedThisTurn && !player.hasPower(EXBoost.POWER_ID)) decreaseEXCharge(1);
+        if (!exGaugeIncreasedThisTurn && !player.hasPower(EXBoostPower.POWER_ID)) decreaseEXCharge(1);
         exGaugeIncreasedThisTurn = false;
         super.applyEndOfTurnTriggers();
     }

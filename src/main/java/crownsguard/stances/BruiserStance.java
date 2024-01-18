@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.powers.StrengthPower;
 import com.megacrit.cardcrawl.stances.AbstractStance;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class BruiserStance extends AbstractStance {
     public static final String STANCE_ID = makeID(BruiserStance.class.getSimpleName());

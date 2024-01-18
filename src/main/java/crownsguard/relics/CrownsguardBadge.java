@@ -8,7 +8,7 @@ import crownsguard.stances.TankStance;
 
 import java.util.Random;
 
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class CrownsguardBadge extends BaseRelic {
     private static final String NAME = "CrownsguardBadge";

@@ -2,7 +2,7 @@ package crownsguard.damage;
 
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 /*
 This for attack that automatically hit even if you are Drunk

@@ -1,11 +1,12 @@
 package crownsguard.damage;
 
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
+import crownsguard.damage.mainDamage.BluntDamage;
 
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class CounterDamage extends AbstractDamageModifier {
-    public static final String ID = makeID(BludgeoningDamage.class.getSimpleName());
+    public static final String ID = makeID(BluntDamage.class.getSimpleName());
     public CounterDamage(){}
 
     /*
@@ -16,7 +17,7 @@ public class CounterDamage extends AbstractDamageModifier {
 
     @Override
     public AbstractDamageModifier makeCopy() {
-        return new BludgeoningDamage();
+        return new BluntDamage();
     }
 
     public boolean isInherent() {

@@ -4,7 +4,6 @@ import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModContainer;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.evacipated.cardcrawl.mod.stslib.powers.interfaces.InvisiblePower;
-import com.megacrit.cardcrawl.actions.common.UpgradeRandomCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
@@ -18,7 +17,7 @@ import crownsguard.damage.EXActionDamage;
 import java.util.ArrayList;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class HiddenEXMechanic extends BasePower implements InvisiblePower {
     public static final String POWER_ID = makeID(HiddenEXMechanic.class.getSimpleName());
@@ -42,7 +41,7 @@ public class HiddenEXMechanic extends BasePower implements InvisiblePower {
         int exChargeGain = 1;
         if (owner.hasPower(DrunkPower.POWER_ID)) exChargeGain += (owner.getPower(POWER_ID).amount);
 
-        if (damageAmount > 0 && info.owner instanceof PlaywrightCharacter && info.type == DamageInfo.DamageType.NORMAL && !info.owner.hasPower(EXBoost.POWER_ID) && target != info.owner) {
+        if (damageAmount > 0 && info.owner instanceof PlaywrightCharacter && info.type == DamageInfo.DamageType.NORMAL && !info.owner.hasPower(EXBoostPower.POWER_ID) && target != info.owner) {
             for (AbstractDamageModifier mod : DamageModifierManager.getDamageMods(info)) {
                 if (mod instanceof EXActionDamage) {
                     exChargeGain = 0;
@@ -59,7 +58,7 @@ public class HiddenEXMechanic extends BasePower implements InvisiblePower {
     public void onInflictDamage(DamageInfo info, int damageAmount, AbstractCreature target) {
         int exChargeGain = 0;
 
-        if (damageAmount > 0 && info.owner instanceof PlaywrightCharacter && info.type == DamageInfo.DamageType.NORMAL && !info.owner.hasPower(EXBoost.POWER_ID) && target != info.owner) {
+        if (damageAmount > 0 && info.owner instanceof PlaywrightCharacter && info.type == DamageInfo.DamageType.NORMAL && !info.owner.hasPower(EXBoostPower.POWER_ID) && target != info.owner) {
             for (AbstractDamageModifier mod : DamageModifierManager.getDamageMods(info)) {
                 if (mod instanceof EXActionDamage) {
                     exChargeGain = 0;

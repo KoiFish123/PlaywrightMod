@@ -4,7 +4,7 @@ import com.megacrit.cardcrawl.actions.common.GainEnergyAction;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class DrunkenMomentumPower extends BasePower{
     public static final String POWER_ID = makeID(DrunkenMomentumPower.class.getSimpleName());

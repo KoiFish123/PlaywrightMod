@@ -3,7 +3,7 @@ package crownsguard.relics;
 
 import crownsguard.character.crownsguard.TheCrownsguard;
 
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class EnmaSpirit extends BaseRelic{
     private static final String NAME = "EnmaSpirit";

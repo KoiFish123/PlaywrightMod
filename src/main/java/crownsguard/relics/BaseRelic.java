@@ -7,7 +7,7 @@ import crownsguard.util.TextureLoader;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.helpers.ImageMaster;
 
-import static crownsguard.CrownsguardMod.relicPath;
+import static crownsguard.PlaywrightMod.relicPath;
 
 public abstract class BaseRelic extends CustomRelic {
     public AbstractCard.CardColor pool = null;

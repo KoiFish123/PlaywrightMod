@@ -10,13 +10,13 @@ import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.character.PlaywrightCharacter;
 import crownsguard.character.crownsguard.TheCrownsguard;
-import crownsguard.powers.EXBoost;
+import crownsguard.powers.EXBoostPower;
 import com.megacrit.cardcrawl.rooms.AbstractRoom;
 import com.megacrit.cardcrawl.helpers.PowerTip;
 
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 import com.megacrit.cardcrawl.vfx.combat.InflameEffect;
 
 public class Kiwami extends BaseRelic implements ClickableRelic {
@@ -90,14 +90,14 @@ public class Kiwami extends BaseRelic implements ClickableRelic {
     }
 
     public void activateEXBoost() {
-        addToBot(new ApplyPowerAction(player, player, new EXBoost(player, exChargeLossOverTurn)));
+        addToBot(new ApplyPowerAction(player, player, new EXBoostPower(player, exChargeLossOverTurn)));
         addToBot(new VFXAction(player, new InflameEffect(player), 1.0F));
         this.beginLongPulse();
         active = true;
     }
 
     public void deactivateEXBoost() {
-        addToBot(new RemoveSpecificPowerAction(player, player, player.getPower(EXBoost.POWER_ID)));
+        addToBot(new RemoveSpecificPowerAction(player, player, player.getPower(EXBoostPower.POWER_ID)));
         this.stopPulse();
         active = false;
     }

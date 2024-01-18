@@ -14,7 +14,7 @@ public class WineAndDine extends BaseCard {
 
 
     private static final CardStats info = new CardStats(
-            TheCrownsguard.Enums.COLOR_ORANGE,
+            CardColor.COLORLESS,
             AbstractCard.CardType.POWER,
             CardRarity.UNCOMMON,
             AbstractCard.CardTarget.SELF,

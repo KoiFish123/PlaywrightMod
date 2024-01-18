@@ -8,7 +8,7 @@ import crownsguard.character.PlaywrightCharacter;
 import crownsguard.character.crownsguard.EXRelentlessBlowAction;
 import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.EXActionDamage;
-import crownsguard.damage.LightDamage;
+import crownsguard.damage.mainDamage.LightDamage;
 import crownsguard.util.CardStats;
 
 public class EXRelentlessBlow extends BaseCard {

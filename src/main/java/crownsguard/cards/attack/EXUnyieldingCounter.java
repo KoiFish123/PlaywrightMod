@@ -18,7 +18,7 @@ import crownsguard.character.PlaywrightCharacter;
 import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.CounterDamage;
 import crownsguard.damage.EXActionDamage;
-import crownsguard.damage.HeavyDamage;
+import crownsguard.damage.mainDamage.HeavyDamage;
 import crownsguard.util.CardStats;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;

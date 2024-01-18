@@ -9,7 +9,7 @@ import crownsguard.cards.reactionInterface.ReactionToExhaustCard;
 import crownsguard.cards.reactionInterface.ReactionToPowerCard;
 import crownsguard.character.crownsguard.TheCrownsguard;
 
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class WhiteSnakeWisdom extends BaseRelic{
     private static final String NAME = "WhiteSnakeWisdom"; //The name will be used for determining the image file as well as the ID.

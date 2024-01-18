@@ -2,7 +2,7 @@ package crownsguard.damage;
 
 import com.evacipated.cardcrawl.mod.stslib.damagemods.AbstractDamageModifier;
 
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class EXActionDamage extends AbstractDamageModifier {
     public static final String ID = makeID(EXActionDamage.class.getSimpleName());

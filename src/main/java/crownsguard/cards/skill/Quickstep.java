@@ -20,7 +20,7 @@ public class Quickstep extends BaseCard implements ReactionToDamageCard {
     private static final int EVADE_POWER = 6;
     private static final int UPG_EVADE_POWER = 3;
     private static final CardStats info = new CardStats(
-            TheCrownsguard.Enums.COLOR_ORANGE,
+            CardColor.COLORLESS,
             CardType.SKILL,
             CardRarity.COMMON,
             CardTarget.NONE,

@@ -1,12 +1,17 @@
 package crownsguard.cards.cardMod;
 
 import basemod.abstracts.AbstractCardModifier;
+import basemod.helpers.TooltipInfo;
 import com.badlogic.gdx.graphics.Color;
 import com.megacrit.cardcrawl.actions.common.DrawCardAction;
 import com.megacrit.cardcrawl.actions.utility.UseCardAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.dungeons.AbstractDungeon;
+
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /*
 - Reaction card's effect will trigger when the conditions on it are met.
@@ -30,6 +35,26 @@ public class ReactionCardMod extends AbstractCardModifier {
         if (reactionTimer == 0){
             card.selfRetain = false;
         }
+    }
+
+    @Override
+    public List<String> extraDescriptors(AbstractCard card) {
+        List<String> cardDescription = new ArrayList<>();
+
+        cardDescription.add("Reaction");
+
+        return cardDescription;
+    }
+
+    @Override
+    public List<TooltipInfo> additionalTooltips(AbstractCard card) {
+
+        List<TooltipInfo> toolTips = new ArrayList<>();
+
+        TooltipInfo reactionToolTip = new TooltipInfo("Reaction","Gain Retain for this turn when this card is drawn. NL This card will be automatically activated when the condition are met and discard itself. NL Playing a reaction card will let you draw another card.");
+
+        toolTips.add(reactionToolTip);
+        return toolTips;
     }
 
     @Override

@@ -3,7 +3,6 @@ package crownsguard.cards.attack;
 import com.evacipated.cardcrawl.mod.stslib.damagemods.DamageModifierManager;
 import com.megacrit.cardcrawl.actions.AbstractGameAction;
 import com.megacrit.cardcrawl.actions.common.DamageAction;
-import com.megacrit.cardcrawl.actions.common.MakeTempCardInHandAction;
 import com.megacrit.cardcrawl.actions.common.ModifyDamageAction;
 import com.megacrit.cardcrawl.cards.AbstractCard;
 import com.megacrit.cardcrawl.cards.DamageInfo;
@@ -13,7 +12,7 @@ import crownsguard.cards.BaseCard;
 import crownsguard.character.PlaywrightCharacter;
 import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.EXActionDamage;
-import crownsguard.damage.HeavyDamage;
+import crownsguard.damage.mainDamage.HeavyDamage;
 import crownsguard.util.CardStats;
 
 public class EXRoadsideBrutality extends BaseCard {
@@ -36,7 +35,6 @@ public class EXRoadsideBrutality extends BaseCard {
         super(ID, info,true);
 
         setDamage(DAMAGE,UPG_DAMAGE);
-        setExhaust(true);
         setSelfRetain(true);
         this.baseMagicNumber = EX_CHARGE_COST;
         this.magicNumber = baseMagicNumber;

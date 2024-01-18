@@ -8,7 +8,7 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.BaseCard;
 import crownsguard.character.crownsguard.TheCrownsguard;
-import crownsguard.damage.LightDamage;
+import crownsguard.damage.mainDamage.LightDamage;
 import crownsguard.util.CardStats;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;

@@ -12,6 +12,7 @@ import crownsguard.cards.BaseCard;
 import crownsguard.cards.reactionInterface.ReactionToDamageCard;
 import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.CounterDamage;
+import crownsguard.damage.mainDamage.LightDamage;
 import crownsguard.util.CardStats;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
@@ -36,6 +37,7 @@ public class ResoluteCounter extends BaseCard implements ReactionToDamageCard {
         DamageModifierManager.addModifier(this, new CounterDamage());
         setSelfRetain(true);
         setDamage(DAMAGE, UPG_DAMAGE);
+        DamageModifierManager.addModifier(this, new LightDamage());
     }
 
     @Override

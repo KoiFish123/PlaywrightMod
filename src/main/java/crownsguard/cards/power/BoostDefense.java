@@ -54,9 +54,4 @@ public class BoostDefense extends BaseCard {
     public void use(AbstractPlayer abstractPlayer, AbstractMonster abstractMonster) {
         addToBot(new ApplyPowerAction((AbstractCreature)abstractPlayer, (AbstractCreature)abstractPlayer, (AbstractPower)new DexterityPower((AbstractCreature)abstractPlayer, this.magicNumber), this.magicNumber));
     }
-
-    @Override
-    public AbstractCard makeCopy() {
-        return new BoostDefense();
-    }
 }

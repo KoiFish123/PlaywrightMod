@@ -15,7 +15,6 @@ import crownsguard.cards.reactionInterface.ReactionToDamageCard;
 import crownsguard.character.PlaywrightCharacter;
 import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.CounterDamage;
-import crownsguard.damage.HeavyDamage;
 import crownsguard.powers.ChargedPower;
 import crownsguard.util.CardStats;
 
@@ -42,7 +41,6 @@ public class TigerStoppingFist extends BaseCard implements ReactionToDamageCard 
         setSelfRetain(true);
 //        DamageModifierManager.addModifier(this, new BludgeoningDamage());
         DamageModifierManager.addModifier(this, new CounterDamage());
-        DamageModifierManager.addModifier(this, new HeavyDamage());
         setDamage(DAMAGE,UPG_DAMAGE);
     }
 
@@ -72,7 +70,6 @@ public class TigerStoppingFist extends BaseCard implements ReactionToDamageCard 
             calculateCardDamage((AbstractMonster)info.owner);
 
             addToTop(new DamageAction(info.owner, new DamageInfo(player, damage + ((PlaywrightCharacter) player).maxEXCharge - ((PlaywrightCharacter) player).exCharge, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-
             return 0;
         }
         return amount;

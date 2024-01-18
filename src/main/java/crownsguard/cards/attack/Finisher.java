@@ -11,8 +11,8 @@ import com.megacrit.cardcrawl.characters.AbstractPlayer;
 import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.BaseCard;
 import crownsguard.character.crownsguard.TheCrownsguard;
-import crownsguard.damage.HeavyDamage;
-import crownsguard.powers.RushCombo;
+import crownsguard.damage.mainDamage.HeavyDamage;
+import crownsguard.powers.RushComboPower;
 import crownsguard.util.CardStats;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;
@@ -55,8 +55,8 @@ public class Finisher extends BaseCard {
     public void use(AbstractPlayer p, AbstractMonster m) {
 
         addToBot(new DamageAction(m, new DamageInfo(p, damage, damageTypeForTurn), AbstractGameAction.AttackEffect.BLUNT_HEAVY));
-        if (p instanceof TheCrownsguard && p.hasPower(RushCombo.POWER_ID))
-            addToTop(new GainEnergyAction(p.getPower(RushCombo.POWER_ID).amount));
+        if (p instanceof TheCrownsguard && p.hasPower(RushComboPower.POWER_ID))
+            addToTop(new GainEnergyAction(p.getPower(RushComboPower.POWER_ID).amount));
         addToBot(new MakeTempCardInHandAction(cardsToPreview, true));
     }
 }

@@ -10,7 +10,7 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import crownsguard.cards.BaseCard;
 import crownsguard.character.PlaywrightCharacter;
 import crownsguard.character.crownsguard.TheCrownsguard;
-import crownsguard.damage.HeavyDamage;
+import crownsguard.damage.mainDamage.HeavyDamage;
 import crownsguard.util.CardStats;
 
 import static com.megacrit.cardcrawl.core.CardCrawlGame.languagePack;

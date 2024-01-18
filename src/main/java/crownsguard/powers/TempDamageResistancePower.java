@@ -6,16 +6,16 @@ import com.megacrit.cardcrawl.cards.DamageInfo;
 import com.megacrit.cardcrawl.core.AbstractCreature;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
-public class TempDamageResistance extends BasePower{
-    public static final String POWER_ID = makeID(TempDamageResistance.class.getSimpleName());
+public class TempDamageResistancePower extends BasePower{
+    public static final String POWER_ID = makeID(TempDamageResistancePower.class.getSimpleName());
 
     private static final AbstractPower.PowerType TYPE = AbstractPower.PowerType.BUFF;
 
     private static final boolean TURN_BASED = true;
 
-    public TempDamageResistance(AbstractCreature owner, int turn) {
+    public TempDamageResistancePower(AbstractCreature owner, int turn) {
         super(POWER_ID, TYPE, TURN_BASED, owner, turn);
         updateDescription();
         this.description = DESCRIPTIONS[0] + turn + DESCRIPTIONS[1];
@@ -28,16 +28,8 @@ public class TempDamageResistance extends BasePower{
     }
 
     @Override
-    public int onAttacked(DamageInfo info, int damageAmount) {
-        if (info.type == DamageInfo.DamageType.NORMAL || info.type == DamageInfo.DamageType.THORNS)
-            return super.onAttacked(info, damageAmount/2);
-
-        return super.onAttacked(info, damageAmount);
-    }
-
-    @Override
     public float atDamageFinalReceive(float damage, DamageInfo.DamageType type) {
-        if (type == DamageInfo.DamageType.NORMAL || type == DamageInfo.DamageType.THORNS)
+        if (type != DamageInfo.DamageType.HP_LOSS)
             return super.atDamageFinalReceive(damage/2, type);
 
 
@@ -46,9 +38,9 @@ public class TempDamageResistance extends BasePower{
 
     @Override
     public void atStartOfTurn() {
-        addToBot(new ReducePowerAction(this.owner, this.owner, TempDamageResistance.POWER_ID, 1));
+        addToBot(new ReducePowerAction(this.owner, this.owner, TempDamageResistancePower.POWER_ID, 1));
         if (this.amount == 0) {
-            addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, TempDamageResistance.POWER_ID));
+            addToBot(new RemoveSpecificPowerAction(this.owner, this.owner, TempDamageResistancePower.POWER_ID));
         }
     }
 

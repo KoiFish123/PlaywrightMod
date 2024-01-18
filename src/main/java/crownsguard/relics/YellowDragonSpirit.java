@@ -3,7 +3,7 @@ package crownsguard.relics;
 import com.megacrit.cardcrawl.relics.AbstractRelic;
 import crownsguard.character.crownsguard.TheCrownsguard;
 
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class YellowDragonSpirit extends BaseRelic{
     private static final String NAME = "YellowDragonSpirit";

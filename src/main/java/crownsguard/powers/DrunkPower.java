@@ -19,7 +19,6 @@ import com.megacrit.cardcrawl.monsters.AbstractMonster;
 import com.megacrit.cardcrawl.powers.AbstractPower;
 import com.megacrit.cardcrawl.powers.GainStrengthPower;
 import com.megacrit.cardcrawl.powers.StrengthPower;
-import com.megacrit.cardcrawl.vfx.combat.BlockedWordEffect;
 import crownsguard.cards.status.Smashed;
 import crownsguard.character.PlaywrightCharacter;
 import crownsguard.damage.DrunkenAccurateDamage;
@@ -27,7 +26,7 @@ import crownsguard.damage.DrunkenAccurateDamage;
 import java.util.Random;
 
 import static com.megacrit.cardcrawl.dungeons.AbstractDungeon.player;
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class DrunkPower extends BasePower {
     public static final String POWER_ID = makeID(DrunkPower.class.getSimpleName());
@@ -91,6 +90,7 @@ public class DrunkPower extends BasePower {
                     }
                 }
                 if (!doesAttackHit()) {
+                    this.flash();
                     damageAmount = 0;
                 }
             }
@@ -106,7 +106,11 @@ public class DrunkPower extends BasePower {
                     }
                 }
 
-                damageAmount = doesAttackHit() ? 0 : amount * 2;
+                if (!doesAttackHit()) {
+                    this.flash();
+                    damageAmount = 0;
+                }
+                else damageAmount += amount * 2;
             }
         }
 
@@ -173,6 +177,9 @@ public class DrunkPower extends BasePower {
 
     @Override
     public void updateDescription() {
-        this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + (this.amount * 10) + DESCRIPTIONS[2];
+        if (owner instanceof PlaywrightCharacter)
+            this.description = DESCRIPTIONS[0] + this.amount + DESCRIPTIONS[1] + (this.amount * 10) + DESCRIPTIONS[4];
+        else
+            this.description = DESCRIPTIONS[2] + this.amount*2 + DESCRIPTIONS[3] + (this.amount * 10) + DESCRIPTIONS[4];
     }
 }

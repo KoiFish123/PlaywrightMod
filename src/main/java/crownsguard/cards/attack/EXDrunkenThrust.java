@@ -12,7 +12,7 @@ import crownsguard.character.PlaywrightCharacter;
 import crownsguard.character.crownsguard.TheCrownsguard;
 import crownsguard.damage.DrunkenAccurateDamage;
 import crownsguard.damage.EXActionDamage;
-import crownsguard.damage.HeavyDamage;
+import crownsguard.damage.mainDamage.HeavyDamage;
 import crownsguard.powers.DrunkPower;
 import crownsguard.util.CardStats;
 

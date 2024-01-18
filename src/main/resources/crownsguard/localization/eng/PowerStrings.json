@@ -9,14 +9,16 @@
   "${modID}:ChargedPower": {
     "NAME": "Charged",
     "DESCRIPTIONS": [
-      "Your next attack deals 50% more damage and becomes Heavy. NL Playing any other card will remove this. NL Does not stack"
+      "Your next attack deals 50% more damage and becomes Heavy. NL Playing any other card will remove this. NL Does not stack",
+      "Next attack deals 50% more damage and becomes Heavy. NL Does not stack."
     ]
   },
 
   "${modID}:RushCombo": {
     "NAME": "Rush Combo",
     "DESCRIPTIONS": [
-      "Dealing light damage increase the stack by 1. NL At 3 stacks, gain [E] and lose all stacks. NL At the start of your turn, lose 1 stack."
+      "Dealing light damage increase the stack by 1. NL At 3 stacks, gain [E] and lose all stacks. NL At the start of your turn, lose 1 stack.",
+      "Dealing light damage increase the stack by 1. NL At 3 stacks, gain #yCharged and lose all stacks. NL At the start of its turn, lose 1 stack."
     ]
   },
 
@@ -64,6 +66,8 @@
     "DESCRIPTIONS":[
       "Attacks give #g",
       " more #yEX #yCharge, but has a #r",
+      "Attacks deal #g",
+      " more damage, but has a #r",
       "% chance of dealing 0 damage. Lose 1 #yDrunk at the start of your turn.",
       "Missed"
     ]
@@ -84,11 +88,19 @@
     ]
   },
 
-  "${modID}:DrunkenMomentum": {
+  "${modID}:DrunkenMomentumPower": {
     "NAME": "Drunken Momentum",
     "DESCRIPTIONS": [
       "At the start of your turn, gain ",
       " [E] for every 3 level of #yDrunk on you."
+    ]
+  },
+
+  "${modID}:GearingUpPower": {
+    "NAME": "Gearing Up",
+    "DESCRIPTIONS": [
+      "Whenever you gain [E], gain ",
+      " block."
     ]
   }
 }

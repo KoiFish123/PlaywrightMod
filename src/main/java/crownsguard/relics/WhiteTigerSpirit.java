@@ -2,7 +2,7 @@ package crownsguard.relics;
 
 import crownsguard.character.crownsguard.TheCrownsguard;
 
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class WhiteTigerSpirit extends BaseRelic{
     private static final String NAME = "WhiteTigerSpirit"; //The name will be used for determining the image file as well as the ID.

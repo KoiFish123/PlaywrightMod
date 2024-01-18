@@ -16,7 +16,7 @@ public class DrunkenMomentum extends BaseCard {
 
 
     private static final CardStats info = new CardStats(
-            TheCrownsguard.Enums.COLOR_ORANGE,
+            CardColor.COLORLESS,
             AbstractCard.CardType.POWER,
             AbstractCard.CardRarity.UNCOMMON,
             AbstractCard.CardTarget.SELF,

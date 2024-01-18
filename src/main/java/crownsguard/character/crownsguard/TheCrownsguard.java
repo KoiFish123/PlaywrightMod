@@ -31,8 +31,8 @@ import crownsguard.stances.TankStance;
 
 import java.util.ArrayList;
 
-import static crownsguard.CrownsguardMod.characterPath;
-import static crownsguard.CrownsguardMod.makeID;
+import static crownsguard.PlaywrightMod.characterPath;
+import static crownsguard.PlaywrightMod.makeID;
 
 public class TheCrownsguard extends PlaywrightCharacter implements StanceInterfaceForCharacter {
     //Stats
