@@ -1,6 +1,6 @@
 # Playwright Mod
 
-This is my mod. It will be having more than one character (dubbed PlaywrightCharacter), each having a different play style, but all will be having some pretty similar mechanics.
+This is my mod for Slay the Spire. It will be having more than one character (dubbed PlaywrightCharacter), each having a different play style, but all will be having some pretty similar mechanics.
 
 I will be going over the common mechanics, and then I will be talking more about each character.
 
